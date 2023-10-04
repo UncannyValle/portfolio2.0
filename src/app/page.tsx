@@ -1,12 +1,10 @@
 import Image from "next/image";
+import { Hero } from "./hero";
 
 export default function Home() {
-    return (
-        <main className="">
-            <div className="container mx-auto">
-                <h1>Julian Valle</h1>
-                <h2>Full Stack Developer</h2>
-            </div>
-        </main>
-    );
+  return (
+    <main className="p-16">
+      <Hero />
+    </main>
+  );
 }
