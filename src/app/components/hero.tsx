@@ -9,7 +9,7 @@ export const Hero = () => {
       <div className="w-1/2">
         <h1 className="inline text-7xl">
           Hi, Everyone! I&apos;m Julian{" "}
-          <div className="inline-block animate-bounce">{emoji("👋🏼")}</div>
+          {/* <div className="inline-block animate-bounce">{emoji("👋🏼")}</div> */}
         </h1>
         <p className="py-8 text-2xl w-2/3">
           Experienced Full Stack Software Engineer specializing in using
