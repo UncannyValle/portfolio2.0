@@ -1,9 +1,17 @@
-import prisma from "@/utils/prisma";
+import { Skill, User } from "@prisma/client";
 
-export const AboutMe = async () => {
-  const user = await prisma.user.findFirst();
+export const AboutMe = ({
+  user,
+  skills,
+}: {
+  user: User | null;
+  skills: Skill[];
+}) => {
+  return (
+    <div className="container">
+      <h2>A bit about me</h2>
 
-  console.log(user);
-
-  return <div className="container">{user?.name}</div>;
+      {user?.name}
+    </div>
+  );
 };

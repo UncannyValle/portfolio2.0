@@ -12,14 +12,14 @@ generator client {
 }
 
 model User {
-    id          Int     @id @default(autoincrement())
-    name        String?
+    id          Int    @id @default(autoincrement())
+    name        String
     headline    String
-    description String
-    email       String  @unique
-    github      String  @unique
-    linkedin    String  @unique
-    resume      String  @unique
+    description String @db.Text
+    email       String @unique
+    github      String @unique
+    linkedin    String @unique
+    resume      String @unique
 }
 
 model Project {
@@ -36,7 +36,7 @@ model Project {
 model Skill {
     id         Int     @id @default(autoincrement())
     name       String
-    experience Int
+    experience Int     @default(0)
     projectId  Int
     Project    Project @relation(fields: [projectId], references: [id])
 
