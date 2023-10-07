@@ -1,10 +1,22 @@
-import Image from "next/image";
-import { Hero } from "./hero";
+import { AboutMe } from "./components/about-me";
+import { Hero } from "./components/hero";
+import prisma from "@/utils/prisma";
 
-export default function Home() {
+import { User, Skill } from "@prisma/client";
+
+export default async function Home() {
+  const user: User | null = await prisma.user.findUnique({
+    where: {
+      id: 1,
+    },
+  });
+
+  const skills: Skill[] = await prisma.skill.findMany();
+
   return (
     <main className="p-16">
       <Hero />
+      <AboutMe user={user} skills={skills} />
     </main>
   );
 }
