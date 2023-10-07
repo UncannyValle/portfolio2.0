@@ -29,16 +29,18 @@ model Project {
     summary   String?
     goal      String?
     outcome   String?
+    skillId   Int?
     published Boolean @default(false)
-    skills    Skill[]
+    skills    Skill?   @relation(fields: [skillId], references: [id])
+
+    @@index([skillId])
 }
 
 model Skill {
-    id         Int     @id @default(autoincrement())
+    id         Int       @id @default(autoincrement())
     name       String
-    experience Int     @default(0)
-    projectId  Int
-    Project    Project @relation(fields: [projectId], references: [id])
-
-    @@index([projectId])
+    experience Int       @default(0)
+    iconName   String
+    iconBrand  String
+    Project    Project[]
 }
