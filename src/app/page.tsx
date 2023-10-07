@@ -14,8 +14,8 @@ export default async function Home() {
   const skills: Skill[] = await prisma.skill.findMany();
 
   return (
-    <main className="p-16">
-      <Hero  />
+    <main className="">
+      <Hero user={user} />
       <AboutMe user={user} skills={skills} />
     </main>
   );

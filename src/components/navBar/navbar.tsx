@@ -3,7 +3,7 @@ import { ThemeSwitcher } from "../darkMode/theme-switcher";
 
 export const Navbar = () => {
   return (
-    <header className="py-2 fixed w-full bg-white dark:bg-black">
+    <header className="py-2 fixed w-full bg-white dark:bg-black z-10">
       <nav className="container mx-auto">
         <div className="hidden justify-between md:flex">
           <Link href="/" className="px-4 py-6 text-3xl">
