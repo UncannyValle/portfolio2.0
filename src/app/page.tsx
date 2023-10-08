@@ -1,10 +1,10 @@
+import { User } from "@prisma/client";
 import { AboutMe } from "./components/about-me";
 import { Hero } from "./components/hero";
 import prisma from "@/utils/prisma";
 import { cache } from "react";
 
-import { User, Skill } from "@prisma/client";
-export const revalidate = 3;
+export const revalidate = 3600;
 
 const getUsers = cache(async () => {
   const res = await prisma.user.findUnique({
