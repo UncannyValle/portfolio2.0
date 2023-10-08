@@ -13,19 +13,19 @@ generator client {
 
 model User {
     id          Int    @id @default(autoincrement())
-    name        String
-    headline    String @db.Text
-    description String @db.LongText
-    email       String @unique
-    github      String @unique
-    linkedin    String @unique
-    resume      String @unique
+    name        String? 
+    headline    String? @db.Text
+    description String? @db.LongText
+    email       String? @unique
+    github      String? @unique
+    linkedin    String? @unique
+    resume      String? @unique
 }
 
 model Project {
     id        Int     @id @default(autoincrement())
-    title     String
-    slug      String  @unique
+    title     String?
+    slug      String?  @unique
     summary   String?
     goal      String?
     outcome   String?
@@ -38,9 +38,9 @@ model Project {
 
 model Skill {
     id         Int       @id @default(autoincrement())
-    name       String
-    experience Int       @default(0)
-    iconName   String
-    iconBrand  String
+    name       String?
+    experience Int?       @default(0)
+    iconName   String?
+    iconBrand  String?
     Project    Project[]
 }

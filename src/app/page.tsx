@@ -15,7 +15,7 @@ export default async function Home() {
 
   return (
     <main className="">
-      <Hero user={user} />
+      <Hero user={user!} />
       <AboutMe user={user} skills={skills} />
     </main>
   );

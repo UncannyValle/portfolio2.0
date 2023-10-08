@@ -7,7 +7,7 @@ import { User } from "@prisma/client";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 
-export const Hero = ({ user }: { user: User | null }) => {
+export const Hero = ({ user }: { user: User }) => {
   return (
     <div className="container mx-auto flex h-screen items-center">
       <div className="w-2/3">
@@ -15,10 +15,10 @@ export const Hero = ({ user }: { user: User | null }) => {
           Hi, Everyone! I&apos;m Julian
           <div className="inline-block animate-bounce">👋🏼</div>
         </h1>
-        <p className="w-3/4 py-8 text-2xl">{user?.headline}</p>
+        <p className="w-3/4 py-8 text-2xl">{user?.headline!}</p>
         <div>
           <a
-            href={user?.github}
+            href={user?.github!}
             target="_blank"
             rel="noreferrer noopener"
             className="mr-7"
@@ -29,7 +29,7 @@ export const Hero = ({ user }: { user: User | null }) => {
             />
           </a>
           <a
-            href={user?.linkedin}
+            href={user?.linkedin!}
             target="_blank"
             rel="noreferrer noopener"
             className="mr-7 "
@@ -40,7 +40,7 @@ export const Hero = ({ user }: { user: User | null }) => {
             />
           </a>
           <a
-            href={`mailto: ${user?.email}`}
+            href={`mailto: ${user?.email!}`}
             target="_blank"
             rel="noreferrer noopener"
             className="mr-7"
