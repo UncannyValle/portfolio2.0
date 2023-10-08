@@ -2,7 +2,7 @@
 
 import { Skill, User } from "@prisma/client";
 import Lottie from "lottie-react";
-import coder2 from "@/images/lotties/coder2.json";
+import coder2 from "../../../public/images/lotties/coder2.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp, config } from "@fortawesome/fontawesome-svg-core";
 import { library } from "@fortawesome/fontawesome-svg-core";

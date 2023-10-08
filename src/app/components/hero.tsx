@@ -1,6 +1,6 @@
 "use client";
 import Lottie from "lottie-react";
-import happyHacker from "@/images/lotties/coder.json";
+import happyHacker from "../../../public/images/lotties/coder.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { User } from "@prisma/client";
