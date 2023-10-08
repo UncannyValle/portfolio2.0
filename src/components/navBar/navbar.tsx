@@ -14,7 +14,7 @@ export const Navbar = () => {
 
       setVisible(
         (prevScrollPos > currentScrollPos &&
-          prevScrollPos - currentScrollPos > 70) ||
+          prevScrollPos - currentScrollPos >= 10) ||
           currentScrollPos < 10,
       );
 
@@ -34,14 +34,17 @@ export const Navbar = () => {
     <header
       className={`${
         visible ? "top-0" : "-top-24"
-      } fixed z-10 w-full bg-white py-2 duration-75 ease-out dark:bg-slate-950`}
+      } fixed z-10 w-full bg-slate-50 py-2 duration-75 ease-out dark:bg-slate-950`}
     >
       <nav className="container mx-auto">
         <div className="hidden justify-between md:flex">
-          <Link href="/" className="px-4 py-6 text-3xl">
+          <Link
+            href="/"
+            className="px-4 py-6 text-3xl transition hover:text-purple-400 hover:scale"
+          >
             {`<Julian Valle.dev />`}
           </Link>
-          <div className="flex w-1/3 items-center justify-evenly">
+          <div className="flex w-1/3 items-center justify-between">
             <Link
               href="/"
               className="rounded px-4 py-3 transition ease-in-out hover:scale-110 active:scale-100 dark:hover:bg-purple-600"
