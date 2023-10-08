@@ -14,8 +14,8 @@ generator client {
 model User {
     id          Int    @id @default(autoincrement())
     name        String
-    headline    String
-    description String @db.Text
+    headline    String @db.Text
+    description String @db.LongText
     email       String @unique
     github      String @unique
     linkedin    String @unique
