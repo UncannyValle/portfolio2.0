@@ -15,7 +15,7 @@ export const Hero = ({ user }: { user: User }) => {
           Hi, Everyone! I&apos;m Julian
           <div className="inline-block animate-bounce">👋🏼</div>
         </h1>
-        <p className="w-3/4 py-8 text-2xl">{user?.headline!}</p>
+        <p className="w-3/4 py-8 text-2xl">{user?.headline!}</p> 
         <div>
           <a
             href={user?.github!}

@@ -9,6 +9,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { far } from "@fortawesome/free-regular-svg-icons";
 import { fab } from "@fortawesome/free-brands-svg-icons";
+import { ReactNode } from "react";
 config.autoAddCss = false;
 
 library.add(fas, far, fab);
@@ -20,26 +21,36 @@ export const AboutMe = ({
   user: User | null;
   skills: Skill[];
 }) => {
+  const points = user?.description!.split(". ");
+
   return (
-    <div className=" mx-auto flex items-center">
+    <div className=" container mx-auto flex items-center">
       <div className="w-1/2">
         <Lottie animationData={coder2} loop />
       </div>
       <div className="w-1/2">
         <h2 className="text-6xl">A bit about me</h2>
-        <p className="text-2xl text-gray-500">
-          Experienced Full Stack Software Engineer specializing in using React,
-          Vue, Laravel, and Next.js.
-        </p>
-        <div className="flex my-4">
+        <ul className="list-disc text-xl my-4">
+          {!points ? (
+            <li>Nothing</li>
+          ) : (
+            points.map((point, index) => (
+              <li key={`point-${index}`}>{point}</li>
+            ))
+          )}
+        </ul>
+        <div className="my-4 flex flex-wrap justify-between">
           {skills.map((skill) => {
             return (
-              <div key={skill.id} className="w-16 text-center mr-4">
+              <div
+                key={skill.id}
+                className="flex flex-col items-center px-3 transition hover:text-purple-600"
+              >
                 <FontAwesomeIcon
-                  className="text-6xl"
+                  className="text-4xl"
                   icon={`${skill.iconBrand} ${skill.iconName}` as IconProp}
                 />
-                {skill.name}
+                <div className="pt-3">{skill.name}</div>
               </div>
             );
           })}
