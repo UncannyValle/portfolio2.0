@@ -6,13 +6,10 @@ import coder2 from "../../../public/images/lotties/coder2.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp, config } from "@fortawesome/fontawesome-svg-core";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { fas } from "@fortawesome/free-solid-svg-icons";
-import { far } from "@fortawesome/free-regular-svg-icons";
 import { fab } from "@fortawesome/free-brands-svg-icons";
-import { ReactNode } from "react";
 config.autoAddCss = false;
 
-library.add(fas, far, fab);
+library.add(fab);
 
 export const AboutMe = ({
   user,
@@ -30,12 +27,14 @@ export const AboutMe = ({
       </div>
       <div className="w-1/2">
         <h2 className="text-6xl">A bit about me</h2>
-        <ul className="list-disc text-xl my-4">
+        <ul className="my-4 text-xl">
           {!points ? (
             <li>Nothing</li>
           ) : (
             points.map((point, index) => (
-              <li key={`point-${index}`}>{point}</li>
+              <li key={`point-${index}`} className="py-2">
+                🚀 {point}
+              </li>
             ))
           )}
         </ul>

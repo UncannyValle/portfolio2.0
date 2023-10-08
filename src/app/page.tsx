@@ -4,14 +4,26 @@ import prisma from "@/utils/prisma";
 
 import { User, Skill } from "@prisma/client";
 
-export default async function Home() {
-  const user: User | null = await prisma.user.findUnique({
+const getUsers = async () => {
+  const res = await prisma.user.findUnique({
     where: {
       id: 1,
     },
   });
 
-  const skills: Skill[] = await prisma.skill.findMany();
+  return res;
+};
+
+const getSkills = async () => {
+  const res = await prisma.skill.findMany();
+
+  return res;
+};
+
+export default async function Home() {
+  const user = await getUsers();
+
+  const skills = await getSkills();
 
   return (
     <main className="">
