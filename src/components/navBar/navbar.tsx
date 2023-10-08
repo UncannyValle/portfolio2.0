@@ -12,11 +12,7 @@ export const Navbar = () => {
     () => {
       const currentScrollPos = window.scrollY;
 
-      setVisible(
-        (prevScrollPos > currentScrollPos &&
-          prevScrollPos - currentScrollPos >= 10) ||
-          currentScrollPos < 10,
-      );
+      setVisible(prevScrollPos > currentScrollPos);
 
       setPrevScrollPos(currentScrollPos);
     },
@@ -28,38 +24,42 @@ export const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [prevScrollPos, visible, handleScroll]);
+  }, [handleScroll]);
 
   return (
     <header
       className={`${
         visible ? "top-0" : "-top-24"
-      } fixed z-10 w-full bg-slate-50 py-2 duration-75 ease-out dark:bg-slate-950`}
+      } fixed z-10 w-full bg-slate-50 py-2 duration-300 ease-out dark:bg-slate-950`}
     >
       <nav className="container mx-auto">
         <div className="hidden justify-between md:flex">
           <Link
             href="/"
-            className="px-4 py-6 text-3xl transition hover:text-purple-400 hover:scale"
+            className="hover:scale px-4 py-6 text-3xl transition hover:text-purple-400"
+            onClick={() => setVisible(true)}
           >
             {`<Julian Valle.dev />`}
           </Link>
           <div className="flex w-1/3 items-center justify-between">
             <Link
-              href="/"
+              href="#about-me"
               className="rounded px-4 py-3 transition ease-in-out hover:scale-110 active:scale-100 dark:hover:bg-purple-600"
+              onClick={() => setVisible(true)}
             >
               About
             </Link>
             <Link
-              href="/"
+              href="#projects"
               className="rounded px-4 py-3 duration-200 hover:scale-110 active:scale-100 dark:hover:bg-purple-600"
+              onClick={() => setVisible(true)}
             >
               Projects
             </Link>
             <Link
               href="/"
               className="rounded px-4 py-3 duration-200 hover:scale-110 active:scale-100 dark:hover:bg-purple-600"
+              onClick={() => setVisible(true)}
             >
               Contact
             </Link>

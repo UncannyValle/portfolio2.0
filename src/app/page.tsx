@@ -1,6 +1,7 @@
 import { User } from "@prisma/client";
 import { AboutMe } from "./components/about-me";
 import { Hero } from "./components/hero";
+import { Projects } from "./components/projects";
 import prisma from "@/utils/prisma";
 import { cache } from "react";
 
@@ -29,6 +30,7 @@ export default async function Home() {
     <main className="">
       <Hero user={user} />
       <AboutMe user={user} skills={skills} />
+      <Projects />
     </main>
   );
 }
