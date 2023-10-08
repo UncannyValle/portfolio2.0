@@ -7,7 +7,7 @@ import { User } from "@prisma/client";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 
-export const Hero = ({ user }: { user: User }) => {
+export const Hero = ({ user }: { user: User | null }) => {
   return (
     <div className="container mx-auto flex h-screen items-center">
       <div className="w-2/3">

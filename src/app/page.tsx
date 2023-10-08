@@ -1,21 +1,33 @@
+import { User } from "@prisma/client";
 import { AboutMe } from "./components/about-me";
 import { Hero } from "./components/hero";
 import prisma from "@/utils/prisma";
+import { cache } from "react";
 
-import { User, Skill } from "@prisma/client";
+export const revalidate = 3600;
 
-export default async function Home() {
-  const user: User | null = await prisma.user.findUnique({
+const getUsers = cache(async () => {
+  const res = await prisma.user.findUnique({
     where: {
       id: 1,
     },
   });
 
-  const skills: Skill[] = await prisma.skill.findMany();
+  return res;
+});
+
+const getSkills = async () => {
+  const res = await prisma.skill.findMany();
+
+  return res;
+};
+
+export default async function Home() {
+  const [user, skills] = await Promise.all([getUsers(), getSkills()]);
 
   return (
     <main className="">
-      <Hero user={user!} />
+      <Hero user={user} />
       <AboutMe user={user} skills={skills} />
     </main>
   );
