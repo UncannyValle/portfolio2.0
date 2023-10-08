@@ -9,10 +9,10 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 export const Hero = ({ user }: { user: User | null }) => {
   return (
     <div className="container mx-auto flex h-screen items-center">
-      <div className="w-1/2">
+      <div className="w-2/3">
         <h1 className="inline text-7xl">
-          Hi, Everyone! I&apos;m
-          <div className="inline-block animate-bounce"> Julian</div>
+          Hi, Everyone! I&apos;m Julian
+          <div className="inline-block animate-bounce">👋🏼</div>
         </h1>
         <p className="w-2/3 py-8 text-2xl">
           Experienced Full Stack Software Engineer specializing in using React,
@@ -27,7 +27,7 @@ export const Hero = ({ user }: { user: User | null }) => {
           >
             <FontAwesomeIcon
               icon={faGithub}
-              className="text-4xl hover:text-purple-500 "
+              className="text-4xl duration-100 ease-in hover:text-purple-500"
             />
           </a>
           <a
@@ -38,7 +38,7 @@ export const Hero = ({ user }: { user: User | null }) => {
           >
             <FontAwesomeIcon
               icon={faLinkedin}
-              className="text-4xl hover:text-purple-500 "
+              className="text-4xl duration-100 ease-in hover:text-purple-500"
             />
           </a>
           <a
@@ -49,12 +49,12 @@ export const Hero = ({ user }: { user: User | null }) => {
           >
             <FontAwesomeIcon
               icon={faEnvelope}
-              className="text-4xl hover:text-purple-500 "
+              className="text-4xl duration-100 ease-in hover:text-purple-500"
             />
           </a>
         </div>
       </div>
-      <div className="w-1/2 p-12">
+      <div className="w-1/3">
         <Lottie animationData={happyHacker} loop />
       </div>
     </div>

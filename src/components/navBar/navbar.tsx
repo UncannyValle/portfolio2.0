@@ -1,9 +1,41 @@
+"use client";
 import Link from "next/link";
 import { ThemeSwitcher } from "../darkMode/theme-switcher";
+import { useEffect, useState } from "react";
+import { debounce } from "@/utils/debounce";
 
 export const Navbar = () => {
+  const [visible, setVisible] = useState(true);
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+
+  const handleScroll = debounce(
+    () => {
+      const currentScrollPos = window.scrollY;
+
+      setVisible(
+        (prevScrollPos > currentScrollPos &&
+          prevScrollPos - currentScrollPos > 70) ||
+          currentScrollPos < 10,
+      );
+
+      setPrevScrollPos(currentScrollPos);
+    },
+    100,
+    false,
+  );
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [prevScrollPos, visible, handleScroll]);
+
   return (
-    <header className="py-2 fixed w-full bg-white dark:bg-black z-10">
+    <header
+      className={`${
+        visible ? "top-0" : "-top-24"
+      } fixed z-10 w-full bg-white py-2 duration-75 ease-out dark:bg-slate-950`}
+    >
       <nav className="container mx-auto">
         <div className="hidden justify-between md:flex">
           <Link href="/" className="px-4 py-6 text-3xl">
