@@ -35,22 +35,22 @@ export const Navbar = () => {
       <nav className="container mx-auto">
         <div className="hidden justify-between md:flex">
           <Link
-            href="/"
-            className="hover:scale px-4 py-6 text-3xl transition hover:text-purple-400"
+            href="/#"
+            className="hover:scale-110 px-4 py-6 text-3xl transition hover:text-purple-400"
             onClick={() => setVisible(true)}
           >
             {`<Julian Valle.dev />`}
           </Link>
           <div className="flex w-1/3 items-center justify-between">
             <Link
-              href="#about-me"
+              href="/#about-me"
               className="rounded px-4 py-3 transition ease-in-out hover:scale-110 active:scale-100 dark:hover:bg-purple-600"
               onClick={() => setVisible(true)}
             >
               About
             </Link>
             <Link
-              href="#projects"
+              href="/#projects"
               className="rounded px-4 py-3 duration-200 hover:scale-110 active:scale-100 dark:hover:bg-purple-600"
               onClick={() => setVisible(true)}
             >

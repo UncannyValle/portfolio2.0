@@ -39,7 +39,7 @@ export default async function Home() {
   ]);
 
   return (
-    <main className="">
+    <main className="container mx-auto">
       <Hero user={user} />
       <AboutMe user={user} skills={skills} />
       <Projects projects={projects} />
