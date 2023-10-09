@@ -12,8 +12,8 @@ generator client {
 }
 
 model User {
-    id          Int    @id @default(autoincrement())
-    name        String? 
+    id          Int     @id @default(autoincrement())
+    name        String?
     headline    String? @db.Text
     description String? @db.LongText
     email       String? @unique
@@ -24,23 +24,22 @@ model User {
 
 model Project {
     id        Int     @id @default(autoincrement())
-    title     String?
-    slug      String?  @unique
-    summary   String?
-    goal      String?
-    outcome   String?
-    skillId   Int?
-    published Boolean @default(false)
-    skills    Skill?   @relation(fields: [skillId], references: [id])
-
-    @@index([skillId])
+    title     String
+    slug      String  @unique
+    summary   String? @db.MediumText
+    goal      String? @db.LongText
+    outcome   String? @db.LongText
+    skills    Skill[]
 }
 
 model Skill {
-    id         Int       @id @default(autoincrement())
+    id         Int     @id @default(autoincrement())
     name       String?
-    experience Int?       @default(0)
+    experience Int?    @default(0)
     iconName   String?
     iconBrand  String?
-    Project    Project[]
+    projectId  Int?
+    Project    Project? @relation(fields: [projectId], references: [id])
+
+    @@index([projectId])
 }

@@ -9,7 +9,7 @@ import Link from "next/link";
 
 export const Hero = ({ user }: { user: User | null }) => {
   return (
-    <div className="container mx-auto flex h-screen items-center">
+    <div className="flex h-screen items-center">
       <div className="w-2/3">
         <h1 className="inline text-7xl">
           Hi, Everyone! I&apos;m Julian
