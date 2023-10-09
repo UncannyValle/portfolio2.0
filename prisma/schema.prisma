@@ -35,13 +35,11 @@ model Project {
 }
 
 model Skill {
-    id         Int      @id @default(autoincrement())
+    id         Int       @id @default(autoincrement())
     name       String?
-    experience Int?     @default(0)
+    experience Int?      @default(0)
     iconName   String?
     iconBrand  String?
     projectId  Int?
-    Project    Project? @relation(fields: [projectId], references: [id])
-
-    @@index([projectId])
+    projects   Project[]
 }
