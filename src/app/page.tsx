@@ -1,4 +1,5 @@
 import { AboutMe } from "./components/about-me";
+import { ContactForm } from "./components/contact-form";
 import { Hero } from "./components/hero";
 import { Projects } from "./components/projects";
 import prisma from "@/utils/prisma";
@@ -43,6 +44,7 @@ export default async function Home() {
       <Hero user={user} />
       <AboutMe user={user} skills={skills} />
       <Projects projects={projects} />
+      <ContactForm />
     </main>
   );
 }
