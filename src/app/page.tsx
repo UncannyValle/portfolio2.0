@@ -33,7 +33,7 @@ const getProjects = async () => {
 };
 
 export default async function Home() {
-//   await new Promise((resolve) => setTimeout(resolve, 3000));
+  const loading = new Promise<Boolean>((resolve) => setTimeout(resolve, 2000));
 
   const [user, skills, projects] = await Promise.all([
     getUsers(),
@@ -43,8 +43,8 @@ export default async function Home() {
 
   return (
     <main className="container mx-auto">
-      <Hero user={user} />
-      <AboutMe user={user} skills={skills} />
+      <Hero user={user} loading={loading} />
+      <AboutMe user={user} skills={skills} loading={loading} />
       <Projects projects={projects} />
       <ContactForm />
     </main>

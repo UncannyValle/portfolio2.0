@@ -6,7 +6,13 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import { DotLottiePlayer } from "@dotlottie/react-player";
 
-export const Hero = ({ user }: { user: User | null }) => {
+export const Hero = ({
+  user,
+  loading,
+}: {
+  user: User | null;
+  loading: Promise<Boolean>;
+}) => {
   return (
     <div className="mt-20 flex min-h-screen flex-wrap items-center p-8">
       <div className="w-full lg:w-2/3">
@@ -71,7 +77,7 @@ export const Hero = ({ user }: { user: User | null }) => {
       </div>
       <div className="mx-auto lg:w-1/3">
         {/* <Lottie animationData={coder} loop /> */}
-        <DotLottiePlayer src="/images/lotties/coder.lottie" loop autoplay />
+        <DotLottiePlayer src="/images/lotties/coder.lottie" loop autoplay={!loading} />
       </div>
     </div>
   );

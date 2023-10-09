@@ -22,8 +22,8 @@ export const Projects = ({ projects }: { projects: ProjectWithSkills[] }) => {
                   src={`/images/projects/${project.slug}/main.png`}
                   alt={project.slug}
                   width={600}
-                  height={600}
-                  className="mx-auto mb-2 h-[200px] w-[200px] object-cover lg:h-[300px] lg:w-[300px]"
+                  height={400}
+                  className="mx-auto mb-2 h-[100px] w-[200px] object-cover lg:h-[200px] lg:w-[300px]"
                 />
                 <p className="text-xl font-bold">{project.title}</p>
                 <div>

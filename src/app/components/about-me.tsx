@@ -15,16 +15,22 @@ library.add(fab, faGem);
 export const AboutMe = ({
   user,
   skills,
+  loading,
 }: {
   user: User | null;
   skills: Skill[];
+  loading: Promise<Boolean>;
 }) => {
   const points = user?.description!.split(". ");
 
   return (
     <div className="flex flex-wrap items-center p-8" id="about-me">
       <div className="mx-auto hidden lg:block lg:w-1/2 ">
-        <DotLottiePlayer src="/images/lotties/coder2.lottie" loop autoplay />
+        <DotLottiePlayer
+          src="/images/lotties/coder2.lottie"
+          loop
+          autoplay={!loading}
+        />
       </div>
       <div className="lg:w-1/2">
         <h2 className="text-4xl lg:text-6xl">A bit about me</h2>
