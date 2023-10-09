@@ -14,14 +14,14 @@ export const Projects = ({ projects }: { projects: ProjectWithSkills[] }) => {
           return (
             <a
               key={project.slug}
-              className="w-1/3 p-4 text-center transition hover:scale-110"
+              className="w-1/3  p-8 text-center transition hover:scale-110"
             >
               <Image
                 src={`/images/projects/${project.slug}/main.png`}
                 alt={project.slug}
                 width={600}
                 height={600}
-                className="mb-2 rounded-2xl drop-shadow-md"
+                className="mb-2 rounded-2xl drop-shadow-md  object-cover h-[300px]"
               />
               <p className="text-xl font-bold">{project.title}</p>
               <div>
