@@ -9,13 +9,13 @@ import Link from "next/link";
 
 export const Hero = ({ user }: { user: User | null }) => {
   return (
-    <div className="flex h-screen items-center">
-      <div className="w-2/3">
-        <h1 className="inline text-7xl">
+    <div className="mt-20 flex h-screen flex-wrap items-center p-8">
+      <div className="w-full lg:w-2/3">
+        <h1 className="inline text-5xl lg:text-7xl">
           Hi, Everyone! I&apos;m Julian
           <div className="inline-block animate-bounce">👋🏼</div>
         </h1>
-        <p className="w-3/4 py-8 text-2xl">{user?.headline!}</p>
+        <p className="py-8 lg:w-3/4  lg:text-2xl">{user?.headline!}</p>
         <div>
           <a
             href={user?.github!}
@@ -51,12 +51,10 @@ export const Hero = ({ user }: { user: User | null }) => {
             />
           </a>
         </div>
-        <div className="my-8">
+        <div className="my-8 flex flex-col items-center md:block">
           <button
             type="button"
-            data-modal-target="contact"
-            data-modal-toggle="contact"
-            className="mr-8 rounded-full bg-purple-500 px-8 py-4 uppercase text-white transition hover:scale-110 hover:bg-purple-800"
+            className="min-w-[210px] rounded-full bg-purple-500 px-8 py-4 uppercase text-white transition hover:scale-110 hover:bg-purple-800 md:w-1/3 md:mr-8"
           >
             Contact Me
           </button>
@@ -65,13 +63,14 @@ export const Hero = ({ user }: { user: User | null }) => {
             target="_blank"
             rel="noreferrer noopener"
             type="button"
-            className="rounded-full bg-purple-500 px-8 py-4 uppercase text-white transition hover:scale-110 hover:bg-purple-800"
+            className="mt-8 min-w-[210px] rounded-full bg-purple-500
+             px-8 py-4 text-center uppercase text-white transition hover:scale-110 hover:bg-purple-800 md:w-1/3 lg:mt-0"
           >
             View my Resume
           </Link>
         </div>
       </div>
-      <div className="w-1/3">
+      <div className="lg:w-1/3">
         <Lottie animationData={coder} loop />
       </div>
     </div>

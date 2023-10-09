@@ -3,8 +3,6 @@ import Link from "next/link";
 import { ThemeSwitcher } from "../darkMode/theme-switcher";
 import { useEffect, useState } from "react";
 import { debounce } from "@/utils/debounce";
-import Lottie from "lottie-react";
-import hamburger from "../../../public/images/lotties/hamburger.json";
 
 export const Navbar = () => {
   const [visible, setVisible] = useState(true);
@@ -41,7 +39,7 @@ export const Navbar = () => {
         <div className="flex items-center justify-between">
           <Link
             href="/#"
-            className="px-4 py-6 text-3xl transition hover:scale-110 hover:text-purple-400"
+            className="px-4 py-6 text-xl lg:text-3xl transition hover:scale-110 hover:text-purple-400"
             onClick={() => setVisible(true)}
           >
             {`<Julian Valle.dev />`}

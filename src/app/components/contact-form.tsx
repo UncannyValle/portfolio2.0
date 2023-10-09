@@ -14,7 +14,7 @@ export const ContactForm = () => {
   return (
     <div className="flex h-screen items-center justify-center" id="contact">
       <Lottie animationData={send} />
-      <div className="w-1/2 p-8">
+      <div className="lg:w-1/2 p-8">
         <h1 className="text-center text-6xl">Contact Me</h1>
         <form
           onSubmit={handleSubmit}
