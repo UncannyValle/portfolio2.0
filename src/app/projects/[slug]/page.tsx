@@ -4,16 +4,17 @@ import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import Link from "next/link";
+import { cache } from "react";
 
-export const revalidate = 3;
+export const revalidate = 3600;
 
-const getProject = async (slug: string) => {
+const getProject = cache(async (slug: string) => {
   return await prisma.project.findUnique({
     where: {
       slug: slug,
     },
   });
-};
+});
 
 export default async function ProjectPage({
   params,
@@ -40,7 +41,7 @@ export default async function ProjectPage({
           {project?.github ? (
             <Link
               href={project.github}
-              className="text-lg dark:text-purple-300 text-purple-600 underline md:text-4xl"
+              className="text-lg text-purple-600 underline dark:text-purple-300 md:text-4xl"
               target="_blank"
               rel="noreferrer noopener"
             >
@@ -48,7 +49,7 @@ export default async function ProjectPage({
               <FontAwesomeIcon className="px-2" icon={faGithub} />
             </Link>
           ) : (
-            <p className="text-lg dark:text-purple-300 text-purple-600 md:text-4xl">
+            <p className="text-lg text-purple-600 dark:text-purple-300 md:text-4xl">
               Private Repo
               <FontAwesomeIcon className="px-2" icon={faGithub} />
             </p>
@@ -56,7 +57,7 @@ export default async function ProjectPage({
           {project?.link ? (
             <Link
               href={project?.link}
-              className="text-lg dark:text-purple-300 text-purple-600 underline md:text-4xl"
+              className="text-lg text-purple-600 underline dark:text-purple-300 md:text-4xl"
               target="_blank"
               rel="noreferrer noopener"
             >
@@ -93,28 +94,28 @@ export default async function ProjectPage({
           <Image
             src={`/images/projects/${project?.slug}/1.png`}
             alt="project picture"
-            className="mx-auto my-8 drop-shadow-lg"
+            className="mx-auto my-8 w-auto drop-shadow-lg"
             height={1000}
             width={1000}
           />
           <Image
             src={`/images/projects/${project?.slug}/2.png`}
             alt="project picture"
-            className="mx-auto my-8 drop-shadow-lg"
+            className="mx-auto my-8  w-auto drop-shadow-lg"
             height={1000}
             width={1000}
           />
           <Image
             src={`/images/projects/${project?.slug}/3.png`}
             alt="project picture"
-            className="mx-auto my-8 drop-shadow-lg"
+            className="mx-auto my-8  w-auto drop-shadow-lg"
             height={1000}
             width={1000}
           />
           <Image
             src={`/images/projects/${project?.slug}/4.png`}
             alt="project picture"
-            className="mx-auto my-8 drop-shadow-lg"
+            className="mx-auto my-8  w-auto drop-shadow-lg"
             height={1000}
             width={1000}
           />

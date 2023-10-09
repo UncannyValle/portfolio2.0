@@ -5,7 +5,7 @@ import { Projects } from "./components/projects";
 import prisma from "@/utils/prisma";
 import { cache } from "react";
 
-export const revalidate = 3;
+export const revalidate = 3600;
 
 const getUsers = cache(async () => {
   const res = await prisma.user.findUnique({
@@ -17,20 +17,20 @@ const getUsers = cache(async () => {
   return res;
 });
 
-const getSkills = async () => {
+const getSkills = cache(async () => {
   const res = await prisma.skill.findMany();
 
   return res;
-};
+});
 
-const getProjects = async () => {
+const getProjects = cache(async () => {
   const res = await prisma.project.findMany({
     include: {
       skills: true,
     },
   });
   return res;
-};
+});
 
 export default async function Home() {
   const loading = new Promise<Boolean>((resolve) => setTimeout(resolve, 2000));
