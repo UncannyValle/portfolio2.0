@@ -26,7 +26,8 @@ model Project {
     id      Int     @id @default(autoincrement())
     title   String
     slug    String  @unique
-    gtihub  String?
+    github  String?
+    link    String?
     summary String? @db.MediumText
     goal    String? @db.LongText
     outcome String? @db.LongText
