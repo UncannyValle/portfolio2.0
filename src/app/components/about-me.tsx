@@ -7,9 +7,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp, config } from "@fortawesome/fontawesome-svg-core";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
+import { faGem } from "@fortawesome/free-solid-svg-icons";
 config.autoAddCss = false;
 
-library.add(fab);
+library.add(fab, faGem);
 
 export const AboutMe = ({
   user,
@@ -21,8 +22,8 @@ export const AboutMe = ({
   const points = user?.description!.split(". ");
 
   return (
-    <div className="flex items-center flex-wrap p-8" id="about-me">
-      <div className="lg:w-1/2">
+    <div className="flex flex-wrap items-center p-8" id="about-me">
+      <div className="mx-auto hidden lg:block lg:w-1/2 ">
         <Lottie animationData={coder2} loop />
       </div>
       <div className="lg:w-1/2">
@@ -43,7 +44,7 @@ export const AboutMe = ({
             return (
               <div
                 key={skill.id}
-                className="flex flex-col items-center px-3 transition hover:text-purple-600"
+                className="flex flex-col items-center p-3 transition hover:text-purple-600"
               >
                 <FontAwesomeIcon
                   className="text-4xl"
@@ -54,6 +55,9 @@ export const AboutMe = ({
             );
           })}
         </div>
+      </div>
+      <div className="visible mx-auto lg:hidden lg:w-1/2 ">
+        <Lottie animationData={coder2} loop />
       </div>
     </div>
   );

@@ -12,8 +12,8 @@ export const ContactForm = () => {
   }
 
   return (
-    <div className="flex h-screen items-center justify-center" id="contact">
-      <Lottie animationData={send} />
+    <div className="flex min-h-screen flex-wrap items-center justify-center" id="contact">
+      <Lottie animationData={send} className="lg:w-1/2" />
       <div className="lg:w-1/2 p-8">
         <h1 className="text-center text-6xl">Contact Me</h1>
         <form

@@ -9,7 +9,7 @@ import Link from "next/link";
 
 export const Hero = ({ user }: { user: User | null }) => {
   return (
-    <div className="mt-20 flex h-screen flex-wrap items-center p-8">
+    <div className="mt-20 flex min-h-screen flex-wrap items-center p-8">
       <div className="w-full lg:w-2/3">
         <h1 className="inline text-5xl lg:text-7xl">
           Hi, Everyone! I&apos;m Julian
@@ -70,7 +70,7 @@ export const Hero = ({ user }: { user: User | null }) => {
           </Link>
         </div>
       </div>
-      <div className="lg:w-1/3">
+      <div className="lg:w-1/3 mx-auto">
         <Lottie animationData={coder} loop />
       </div>
     </div>
