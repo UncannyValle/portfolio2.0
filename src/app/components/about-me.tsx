@@ -21,7 +21,7 @@ export const AboutMe = ({
   const points = user?.description!.split(". ");
 
   return (
-    <div className="flex h-screen items-center" id="about-me">
+    <div className="flex items-center" id="about-me">
       <div className="w-1/2">
         <Lottie animationData={coder2} loop />
       </div>

@@ -25,8 +25,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className="scroll-smooth">
-      <body className={`${inter.className} bg-slate-50 dark:bg-slate-950`}>
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={`${inter.className} scroll-smooth bg-slate-50 dark:bg-slate-950`}
+      >
         <Providers attribute="class">
           <Navbar />
           {children}

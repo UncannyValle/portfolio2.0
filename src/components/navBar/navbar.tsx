@@ -57,7 +57,7 @@ export const Navbar = () => {
               Projects
             </Link>
             <Link
-              href="/"
+              href="/#contact"
               className="rounded px-4 py-3 duration-200 hover:scale-110 active:scale-100 dark:hover:bg-purple-600"
               onClick={() => setVisible(true)}
             >

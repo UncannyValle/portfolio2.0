@@ -1,6 +1,6 @@
 "use client";
 import Lottie from "lottie-react";
-import happyHacker from "../../../public/images/lotties/coder.json";
+import coder from "../../../public/images/lotties/coder.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { User } from "@prisma/client";
@@ -52,13 +52,14 @@ export const Hero = ({ user }: { user: User | null }) => {
           </a>
         </div>
         <div className="my-8">
-          <Link
-            href="/"
+          <button
             type="button"
+            data-modal-target="contact"
+            data-modal-toggle="contact"
             className="mr-8 rounded-full bg-purple-500 px-8 py-4 uppercase text-white transition hover:scale-110 hover:bg-purple-800"
           >
             Contact Me
-          </Link>
+          </button>
           <Link
             href="https://docs.google.com/document/d/1YjUjr4fdC3wGaPPiZiWfG9pZkLwAHqXrooT2vvO-W44/edit?usp=sharing"
             target="_blank"
@@ -71,7 +72,7 @@ export const Hero = ({ user }: { user: User | null }) => {
         </div>
       </div>
       <div className="w-1/3">
-        <Lottie animationData={happyHacker} loop />
+        <Lottie animationData={coder} loop />
       </div>
     </div>
   );

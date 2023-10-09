@@ -9,13 +9,13 @@ export const Projects = ({ projects }: { projects: ProjectWithSkills[] }) => {
   return (
     <div className="flex h-screen items-center" id="projects">
       <div>
-        <h1 className="my-4 text-center text-6xl">Projects Section</h1>
-        <div className="my-8 flex justify-center">
+        <h1 className="my-4 text-center text-6xl">Projects</h1>
+        <div className="grid grid-cols-3 gap-4">
           {projects.map((project) => {
             return (
               <a
                 key={project.slug}
-                className="w-1/3  p-8 text-center transition hover:scale-110"
+                className="border-1 rounded-2xl border-solid border-slate-400 p-8 text-center shadow-md  transition hover:shadow-2xl"
                 href={`/projects/${project.slug}`}
               >
                 <Image
@@ -23,7 +23,7 @@ export const Projects = ({ projects }: { projects: ProjectWithSkills[] }) => {
                   alt={project.slug}
                   width={600}
                   height={600}
-                  className="mb-2 h-[300px] rounded-2xl  object-cover drop-shadow-md"
+                  className="mb-2 h-[300px] object-cover"
                 />
                 <p className="text-xl font-bold">{project.title}</p>
                 <div>
