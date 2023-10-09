@@ -30,7 +30,7 @@ export default async function ProjectPage({
       <Image
         src={`/images/projects/${project?.slug}/main.png`}
         alt="project picture"
-        className="mx-auto my-8 drop-shadow-l w-auto h-auto"
+        className="drop-shadow-l mx-auto my-8 h-auto w-auto"
         height={1000}
         width={1200}
         priority
@@ -40,7 +40,7 @@ export default async function ProjectPage({
           {project?.github ? (
             <Link
               href={project.github}
-              className="text-lg text-purple-600 underline md:text-4xl"
+              className="text-lg dark:text-purple-300 text-purple-600 underline md:text-4xl"
               target="_blank"
               rel="noreferrer noopener"
             >
@@ -48,7 +48,7 @@ export default async function ProjectPage({
               <FontAwesomeIcon className="px-2" icon={faGithub} />
             </Link>
           ) : (
-            <p className="text-lg text-purple-600 md:text-4xl">
+            <p className="text-lg dark:text-purple-300 text-purple-600 md:text-4xl">
               Private Repo
               <FontAwesomeIcon className="px-2" icon={faGithub} />
             </p>
@@ -56,7 +56,9 @@ export default async function ProjectPage({
           {project?.link ? (
             <Link
               href={project?.link}
-              className="text-lg text-purple-600 underline md:text-4xl"
+              className="text-lg dark:text-purple-300 text-purple-600 underline md:text-4xl"
+              target="_blank"
+              rel="noreferrer noopener"
             >
               Project Link{" "}
               <FontAwesomeIcon

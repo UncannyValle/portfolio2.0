@@ -1,13 +1,13 @@
 "use client";
 
 import { Skill, User } from "@prisma/client";
-import Lottie from "lottie-react";
-import coder2 from "../../../public/images/lotties/coder2.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp, config } from "@fortawesome/fontawesome-svg-core";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { faGem } from "@fortawesome/free-solid-svg-icons";
+import { DotLottiePlayer } from "@dotlottie/react-player";
+
 config.autoAddCss = false;
 
 library.add(fab, faGem);
@@ -24,7 +24,7 @@ export const AboutMe = ({
   return (
     <div className="flex flex-wrap items-center p-8" id="about-me">
       <div className="mx-auto hidden lg:block lg:w-1/2 ">
-        <Lottie animationData={coder2} loop />
+        <DotLottiePlayer src="/images/lotties/coder2.lottie" loop autoplay />
       </div>
       <div className="lg:w-1/2">
         <h2 className="text-4xl lg:text-6xl">A bit about me</h2>
@@ -57,7 +57,7 @@ export const AboutMe = ({
         </div>
       </div>
       <div className="visible mx-auto lg:hidden lg:w-1/2 ">
-        <Lottie animationData={coder2} loop />
+        <DotLottiePlayer src="/images/lotties/coder2.lottie" loop autoplay />
       </div>
     </div>
   );

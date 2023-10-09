@@ -1,20 +1,27 @@
 "use client";
 
 import { useForm, ValidationError } from "@formspree/react";
-import Lottie from "lottie-react";
-import send from "../../../public/images/lotties/send.json";
+import { DotLottiePlayer } from "@dotlottie/react-player";
 
 export const ContactForm = () => {
   const [state, handleSubmit] = useForm("xvodaqva");
 
   if (state.succeeded) {
-    return <div>Thank you for signing up!</div>;
+    return (
+      <DotLottiePlayer
+        src="/images/lotties/send.lottie"
+        className="mx-auto lg:w-1/2 p-32"
+        autoplay
+      />
+    );
   }
 
   return (
-    <div className="flex min-h-screen flex-wrap items-center justify-center" id="contact">
-      <Lottie animationData={send} className="lg:w-1/2" />
-      <div className="lg:w-1/2 p-8">
+    <div
+      className="flex min-h-screen flex-wrap items-center justify-center"
+      id="contact"
+    >
+      <div className="p-8 lg:w-1/2">
         <h1 className="text-center text-6xl">Contact Me</h1>
         <form
           onSubmit={handleSubmit}
@@ -24,7 +31,7 @@ export const ContactForm = () => {
             Name
           </label>
           <input
-            className="rounded-xl border-2 border-solid border-purple-600 p-4 mb-8"
+            className="mb-8 rounded-xl border-2 border-solid border-purple-600 p-4"
             type="text"
             name="name"
             required
@@ -37,7 +44,7 @@ export const ContactForm = () => {
             type="email"
             name="email"
             required
-            className="rounded-xl border-2 border-solid border-purple-600 p-4 mb-8"
+            className="mb-8 rounded-xl border-2 border-solid border-purple-600 p-4"
           />
           <ValidationError prefix="Email" field="email" errors={state.errors} />
           <label className="text-lg font-semibold" htmlFor="message">
@@ -47,7 +54,7 @@ export const ContactForm = () => {
             id="message"
             name="message"
             required
-            className="rounded-xl border-2 border-solid border-purple-600 p-4 h-32"
+            className="h-32 rounded-xl border-2 border-solid border-purple-600 p-4"
           />
           <ValidationError
             prefix="Message"

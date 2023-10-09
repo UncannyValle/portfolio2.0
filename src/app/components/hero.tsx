@@ -1,11 +1,10 @@
 "use client";
-import Lottie from "lottie-react";
-import coder from "../../../public/images/lotties/coder.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { User } from "@prisma/client";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
+import { DotLottiePlayer } from "@dotlottie/react-player";
 
 export const Hero = ({ user }: { user: User | null }) => {
   return (
@@ -54,7 +53,7 @@ export const Hero = ({ user }: { user: User | null }) => {
         <div className="my-8 flex flex-col items-center md:block">
           <button
             type="button"
-            className="min-w-[210px] rounded-full bg-purple-500 px-8 py-4 uppercase text-white transition hover:scale-110 hover:bg-purple-800 md:w-1/3 md:mr-8"
+            className="min-w-[210px] rounded-full bg-purple-500 px-8 py-4 uppercase text-white transition hover:scale-110 hover:bg-purple-800 md:mr-8 md:w-1/3"
           >
             Contact Me
           </button>
@@ -70,8 +69,9 @@ export const Hero = ({ user }: { user: User | null }) => {
           </Link>
         </div>
       </div>
-      <div className="lg:w-1/3 mx-auto">
-        <Lottie animationData={coder} loop />
+      <div className="mx-auto lg:w-1/3">
+        {/* <Lottie animationData={coder} loop /> */}
+        <DotLottiePlayer src="/images/lotties/coder.lottie" loop autoplay />
       </div>
     </div>
   );
