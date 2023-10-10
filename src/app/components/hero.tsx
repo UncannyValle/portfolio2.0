@@ -57,12 +57,13 @@ export const Hero = ({
           </a>
         </div>
         <div className="my-8 flex flex-col items-center md:block">
-          <button
+          <Link
+            href="/#contact"
             type="button"
             className="min-w-[210px] rounded-full bg-purple-500 px-8 py-4 uppercase text-white transition hover:scale-110 hover:bg-purple-800 md:mr-8 md:w-1/3"
           >
             Contact Me
-          </button>
+          </Link>
           <Link
             href="https://docs.google.com/document/d/1YjUjr4fdC3wGaPPiZiWfG9pZkLwAHqXrooT2vvO-W44/edit?usp=sharing"
             target="_blank"
@@ -77,7 +78,11 @@ export const Hero = ({
       </div>
       <div className="mx-auto lg:w-1/3">
         {/* <Lottie animationData={coder} loop /> */}
-        <DotLottiePlayer src="/images/lotties/coder.lottie" loop autoplay={!loading} />
+        <DotLottiePlayer
+          src="/images/lotties/coder.lottie"
+          loop
+          autoplay={!loading}
+        />
       </div>
     </div>
   );
