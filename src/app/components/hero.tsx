@@ -6,13 +6,7 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import { DotLottiePlayer } from "@dotlottie/react-player";
 
-export const Hero = ({
-  user,
-  loading,
-}: {
-  user: User | null;
-  loading: Promise<Boolean>;
-}) => {
+export const Hero = ({ user }: { user: User | null }) => {
   return (
     <div className="mt-20 flex min-h-screen flex-wrap items-center p-8">
       <div className="w-full lg:w-2/3">
@@ -56,11 +50,11 @@ export const Hero = ({
             />
           </a>
         </div>
-        <div className="my-8 flex flex-col items-center md:block">
+        <div className="my-8 flex flex-col items-center md:flex-row">
           <Link
             href="/#contact"
             type="button"
-            className="min-w-[210px] rounded-full bg-purple-500 px-8 py-4 uppercase text-white transition hover:scale-110 hover:bg-purple-800 md:mr-8 md:w-1/3"
+            className="min-w-[210px] rounded-full bg-purple-500 px-8 py-4 text-center uppercase text-white transition hover:scale-110 hover:bg-purple-800 md:mr-8"
           >
             Contact Me
           </Link>
@@ -70,19 +64,14 @@ export const Hero = ({
             rel="noreferrer noopener"
             type="button"
             className="mt-8 min-w-[210px] rounded-full bg-purple-500
-             px-8 py-4 text-center uppercase text-white transition hover:scale-110 hover:bg-purple-800 md:w-1/3 lg:mt-0"
+             px-8 py-4 text-center uppercase text-white transition hover:scale-110 hover:bg-purple-800 md:mt-0"
           >
             View my Resume
           </Link>
         </div>
       </div>
       <div className="mx-auto lg:w-1/3">
-        {/* <Lottie animationData={coder} loop /> */}
-        <DotLottiePlayer
-          src="/images/lotties/coder.lottie"
-          loop
-          autoplay={!loading}
-        />
+        <DotLottiePlayer src="/images/lotties/coder.lottie" loop autoplay />
       </div>
     </div>
   );

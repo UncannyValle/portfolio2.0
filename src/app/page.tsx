@@ -33,18 +33,17 @@ const getProjects = cache(async () => {
 });
 
 export default async function Home() {
-  const loading = new Promise<Boolean>((resolve) => setTimeout(resolve, 2000));
-
   const [user, skills, projects] = await Promise.all([
     getUsers(),
     getSkills(),
     getProjects(),
   ]);
+  await new Promise((resolve) => setTimeout(resolve, 500));
 
   return (
     <main className="container mx-auto">
-      <Hero user={user} loading={loading} />
-      <AboutMe user={user} skills={skills} loading={loading} />
+      <Hero user={user} />
+      <AboutMe user={user} skills={skills} />
       <Projects projects={projects} />
       <ContactForm />
     </main>
