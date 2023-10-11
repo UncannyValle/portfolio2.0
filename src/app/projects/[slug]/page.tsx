@@ -4,17 +4,14 @@ import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import Link from "next/link";
-import { cache } from "react";
 
-export const revalidate = 3600;
-
-const getProject = cache(async (slug: string) => {
+const getProject = async (slug: string) => {
   return await prisma.project.findUnique({
     where: {
       slug: slug,
     },
   });
-});
+};
 
 export default async function ProjectPage({
   params,

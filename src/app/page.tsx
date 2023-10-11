@@ -3,11 +3,8 @@ import { ContactForm } from "./components/contact-form";
 import { Hero } from "./components/hero";
 import { Projects } from "./components/projects";
 import prisma from "@/utils/prisma";
-import { cache } from "react";
 
-export const revalidate = 3600;
-
-const getUsers = cache(async () => {
+const getUsers = async () => {
   const res = await prisma.user.findUnique({
     where: {
       id: 1,
@@ -15,22 +12,22 @@ const getUsers = cache(async () => {
   });
 
   return res;
-});
+};
 
-const getSkills = cache(async () => {
+const getSkills = async () => {
   const res = await prisma.skill.findMany();
 
   return res;
-});
+};
 
-const getProjects = cache(async () => {
+const getProjects = async () => {
   const res = await prisma.project.findMany({
     include: {
       skills: true,
     },
   });
   return res;
-});
+};
 
 export default async function Home() {
   const [user, skills, projects] = await Promise.all([

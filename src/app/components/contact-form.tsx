@@ -4,13 +4,13 @@ import { useForm, ValidationError } from "@formspree/react";
 import { DotLottiePlayer } from "@dotlottie/react-player";
 
 export const ContactForm = () => {
-  const [state, handleSubmit] = useForm("xvodaqva");
+  const [state, handleSubmit] = useForm(process.env.NEXT_PUBLIC_FORM!);
 
   if (state.succeeded) {
     return (
       <DotLottiePlayer
         src="/images/lotties/send.lottie"
-        className="mx-auto lg:w-1/2 p-32"
+        className="mx-auto p-32 lg:w-1/2"
         autoplay
       />
     );
@@ -27,13 +27,14 @@ export const ContactForm = () => {
           onSubmit={handleSubmit}
           className="mx-auto flex flex-col p-8 shadow-xl"
         >
-          <label className="text-lg font-semibold" htmlFor="name">
+          <label className="text-lg font-semibold" htmlFor="full-name">
             Name
           </label>
           <input
             className="mb-8 rounded-xl border-2 border-solid border-purple-600 p-4"
             type="text"
-            name="name"
+            id="full-name"
+            name="full-name"
             required
           />
 
@@ -42,7 +43,7 @@ export const ContactForm = () => {
           </label>
           <input
             type="email"
-            name="email"
+            id="email"
             required
             className="mb-8 rounded-xl border-2 border-solid border-purple-600 p-4"
           />
