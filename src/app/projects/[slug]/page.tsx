@@ -19,7 +19,7 @@ export default async function ProjectPage({
   params: { slug: string };
 }) {
   const project = await getProject(params.slug);
-  await new Promise((resolve) => setTimeout(resolve, 500));
+  await new Promise((resolve) => setTimeout(resolve, 1000));
 
   return (
     <main className="container mx-auto mt-[120px] min-h-screen p-8">

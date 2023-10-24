@@ -35,7 +35,7 @@ export default async function Home() {
     getSkills(),
     getProjects(),
   ]);
-  await new Promise((resolve) => setTimeout(resolve, 500));
+  await new Promise((resolve) => setTimeout(resolve, 1000));
 
   return (
     <main className="container mx-auto">
