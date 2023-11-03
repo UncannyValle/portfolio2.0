@@ -2,8 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
+import { FaMoon, FaSun } from "react-icons/fa";
 
 export const ThemeSwitcher = () => {
   const [mounted, setMounted] = useState(false);
@@ -23,9 +22,9 @@ export const ThemeSwitcher = () => {
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
     >
       {theme === "light" ? (
-        <FontAwesomeIcon className="text-2xl text-blue-950" icon={faMoon} />
+        <FaMoon className="text-2xl text-blue-950" />
       ) : (
-        <FontAwesomeIcon className="text-2xl text-yellow-400" icon={faSun} />
+        <FaSun className="text-2xl text-yellow-400" />
       )}
     </button>
   );

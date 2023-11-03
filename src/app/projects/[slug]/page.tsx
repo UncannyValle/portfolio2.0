@@ -1,9 +1,7 @@
 import prisma from "@/utils/prisma";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import Link from "next/link";
+import { FaArrowUp, FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 
 const getProject = async (slug: string) => {
   return await prisma.project.findUnique({
@@ -44,12 +42,12 @@ export default async function ProjectPage({
               rel="noreferrer noopener"
             >
               Check the Repo
-              <FontAwesomeIcon className="px-2" icon={faGithub} />
+              <FaGithub className="px-2" />
             </Link>
           ) : (
             <p className="text-lg text-purple-600 dark:text-purple-300 md:text-xl">
               Private Repo
-              <FontAwesomeIcon className="px-2" icon={faGithub} />
+              <FaGithub className="px-2" />
             </p>
           )}
           {project?.link ? (
@@ -60,9 +58,8 @@ export default async function ProjectPage({
               rel="noreferrer noopener"
             >
               Project Link{" "}
-              <FontAwesomeIcon
+              <FaExternalLinkAlt
                 className="px-2"
-                icon={faArrowUpRightFromSquare}
               />
             </Link>
           ) : null}

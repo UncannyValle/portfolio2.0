@@ -1,16 +1,8 @@
 "use client";
 
 import { Skill, User } from "@prisma/client";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { IconProp, config } from "@fortawesome/fontawesome-svg-core";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { fab } from "@fortawesome/free-brands-svg-icons";
-import { faGem } from "@fortawesome/free-solid-svg-icons";
 import { DotLottiePlayer } from "@dotlottie/react-player";
-
-config.autoAddCss = false;
-
-library.add(fab, faGem);
+import { FaJs, FaReact, FaVuejs } from "react-icons/fa";
 
 export const AboutMe = ({
   user,
@@ -39,22 +31,20 @@ export const AboutMe = ({
             ))
           )}
         </ul>
-        <div className="my-4 flex flex-wrap justify-between">
-          {skills.map((skill) => {
-            return (
-              <div
-                key={skill.id}
-                className="flex flex-col items-center p-3 transition hover:text-purple-600"
-              >
-                <FontAwesomeIcon
-                  className="text-4xl"
-                  icon={`${skill.iconBrand} ${skill.iconName}` as IconProp}
-                />
-                <div className="pt-3">{skill.name}</div>
-              </div>
-            );
-          })}
-        </div>
+        <ul className="my-4 flex flex-wrap justify-between">
+          <li className="p-3 text-center transition hover:animate-ping">
+            <FaReact className="mx-auto text-4xl" />
+            <span className="pt-3">React</span>
+          </li>
+          <li className="p-3 text-center hover:animate-bounce">
+            <FaVuejs className="mx-auto text-4xl" />
+            <span className="pt-3">Vue</span>
+          </li>
+          <li className="p-3 text-center">
+            <FaJs className="mx-auto text-4xl hover:animate-bounce transition" />
+            <span className="pt-3">JavaScript</span>
+          </li>
+        </ul>
       </div>
       <div className="visible mx-auto lg:hidden lg:w-1/2 ">
         <DotLottiePlayer src="/images/lotties/coder2.lottie" loop autoplay />

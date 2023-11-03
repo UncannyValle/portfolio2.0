@@ -1,10 +1,8 @@
 "use client";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { User } from "@prisma/client";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import { DotLottiePlayer } from "@dotlottie/react-player";
+import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
 
 export const Hero = ({ user }: { user: User | null }) => {
   return (
@@ -20,10 +18,9 @@ export const Hero = ({ user }: { user: User | null }) => {
             href={user?.github!}
             target="_blank"
             rel="noreferrer noopener"
-            className="mr-7"
+            className="mr-7 inline-block"
           >
-            <FontAwesomeIcon
-              icon={faGithub}
+            <FaGithub
               className="text-4xl transition ease-in hover:scale-110 hover:text-purple-500"
             />
           </a>
@@ -31,10 +28,9 @@ export const Hero = ({ user }: { user: User | null }) => {
             href={user?.linkedin!}
             target="_blank"
             rel="noreferrer noopener"
-            className="mr-7 "
+            className="mr-7 inline-block"
           >
-            <FontAwesomeIcon
-              icon={faLinkedin}
+            <FaLinkedin
               className="text-4xl transition ease-in hover:scale-110 hover:text-purple-500"
             />
           </a>
@@ -42,10 +38,9 @@ export const Hero = ({ user }: { user: User | null }) => {
             href={`mailto: ${user?.email!}`}
             target="_blank"
             rel="noreferrer noopener"
-            className="mr-7"
+            className="mr-7 inline-block"
           >
-            <FontAwesomeIcon
-              icon={faEnvelope}
+            <FaEnvelope
               className="text-4xl transition ease-in hover:scale-110 hover:text-purple-500"
             />
           </a>
