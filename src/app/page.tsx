@@ -5,7 +5,7 @@ import { Projects } from "./components/projects";
 import prisma from "@/utils/prisma";
 
 const getUsers = async () => {
-  const res = await prisma.user.findUnique({
+  const res = prisma.user.findUnique({
     where: {
       id: 1,
     },
@@ -14,14 +14,10 @@ const getUsers = async () => {
   return res;
 };
 
-const getSkills = async () => {
-  const res = await prisma.skill.findMany();
 
-  return res;
-};
 
 const getProjects = async () => {
-  const res = await prisma.project.findMany({
+  const res = prisma.project.findMany({
     include: {
       skills: true,
     },
@@ -30,17 +26,16 @@ const getProjects = async () => {
 };
 
 export default async function Home() {
-  const [user, skills, projects] = await Promise.all([
+  const [user, projects] = await Promise.all([
     getUsers(),
-    getSkills(),
+    // getSkills(),
     getProjects(),
   ]);
-  await new Promise((resolve) => setTimeout(resolve, 1000));
 
   return (
     <main className="container mx-auto">
       <Hero user={user} />
-      <AboutMe user={user} skills={skills} />
+      <AboutMe user={user} />
       <Projects projects={projects} />
       <ContactForm />
     </main>

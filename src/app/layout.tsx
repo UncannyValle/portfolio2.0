@@ -22,7 +22,7 @@ export default function RootLayout({
       <body
         className={`${inter.className} scroll-smooth bg-slate-50 dark:bg-slate-950`}
       >
-        <Providers attribute="class">
+        <Providers attribute="class" defaultTheme="system" enableSystem>
           <Navbar />
           {children}
           <Analytics />

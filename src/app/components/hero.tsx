@@ -1,10 +1,24 @@
 "use client";
 import { User } from "@prisma/client";
 import Link from "next/link";
-import { DotLottiePlayer } from "@dotlottie/react-player";
+import { DotLottiePlayer, PlayerEvents } from "@dotlottie/react-player";
 import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
+import { useEffect, useState } from "react";
 
 export const Hero = ({ user }: { user: User | null }) => {
+  const [loading, setLoading] = useState(true);
+  const [ready, setReady] = useState(false);
+
+  const handleOnReady = () => {
+    setReady(true);
+  };
+
+  useEffect(() => {
+    if (!ready) {
+      setLoading(false);
+    }
+  }, [ready]);
+
   return (
     <div className="mt-20 flex min-h-screen flex-wrap items-center p-8">
       <div className="w-full lg:w-2/3">
@@ -20,9 +34,7 @@ export const Hero = ({ user }: { user: User | null }) => {
             rel="noreferrer noopener"
             className="mr-7 inline-block"
           >
-            <FaGithub
-              className="text-4xl transition ease-in hover:scale-110 hover:text-purple-500"
-            />
+            <FaGithub className="text-4xl transition ease-in hover:scale-110 hover:text-purple-500" />
           </a>
           <a
             href={user?.linkedin!}
@@ -30,9 +42,7 @@ export const Hero = ({ user }: { user: User | null }) => {
             rel="noreferrer noopener"
             className="mr-7 inline-block"
           >
-            <FaLinkedin
-              className="text-4xl transition ease-in hover:scale-110 hover:text-purple-500"
-            />
+            <FaLinkedin className="text-4xl transition ease-in hover:scale-110 hover:text-purple-500" />
           </a>
           <a
             href={`mailto: ${user?.email!}`}
@@ -40,9 +50,7 @@ export const Hero = ({ user }: { user: User | null }) => {
             rel="noreferrer noopener"
             className="mr-7 inline-block"
           >
-            <FaEnvelope
-              className="text-4xl transition ease-in hover:scale-110 hover:text-purple-500"
-            />
+            <FaEnvelope className="text-4xl transition ease-in hover:scale-110 hover:text-purple-500" />
           </a>
         </div>
         <div className="my-8 flex flex-col items-center md:flex-row">
@@ -66,7 +74,21 @@ export const Hero = ({ user }: { user: User | null }) => {
         </div>
       </div>
       <div className="mx-auto lg:w-1/3">
-        <DotLottiePlayer src="/images/lotties/coder.lottie" loop autoplay />
+        {loading ? (
+          <div>boop</div>
+        ) : (
+          <DotLottiePlayer
+            src="/images/lotties/coder.lottie"
+            onEvent={(event: PlayerEvents) => {
+              if (event === PlayerEvents.Ready) {
+                handleOnReady();
+              }
+            }}
+            loop
+            autoplay
+          />
+        )}
+        <button onClick={() => setLoading(!loading)}>Poke</button>
       </div>
     </div>
   );

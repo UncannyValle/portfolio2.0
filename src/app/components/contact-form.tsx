@@ -44,6 +44,7 @@ export const ContactForm = () => {
           <input
             type="email"
             id="email"
+            name="email"
             required
             className="mb-8 rounded-xl border-2 border-solid border-purple-600 p-4"
           />

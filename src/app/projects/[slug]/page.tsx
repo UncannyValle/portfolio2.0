@@ -1,10 +1,10 @@
 import prisma from "@/utils/prisma";
 import Image from "next/image";
 import Link from "next/link";
-import { FaArrowUp, FaExternalLinkAlt, FaGithub } from "react-icons/fa";
+import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 
-const getProject = async (slug: string) => {
-  return await prisma.project.findUnique({
+const getProject = (slug: string) => {
+  return prisma.project.findUnique({
     where: {
       slug: slug,
     },
@@ -17,7 +17,6 @@ export default async function ProjectPage({
   params: { slug: string };
 }) {
   const project = await getProject(params.slug);
-  await new Promise((resolve) => setTimeout(resolve, 1000));
 
   return (
     <main className="container mx-auto mt-[120px] min-h-screen p-8">
@@ -57,10 +56,7 @@ export default async function ProjectPage({
               target="_blank"
               rel="noreferrer noopener"
             >
-              Project Link{" "}
-              <FaExternalLinkAlt
-                className="px-2"
-              />
+              Project Link <FaExternalLinkAlt className="px-2" />
             </Link>
           ) : null}
         </div>
