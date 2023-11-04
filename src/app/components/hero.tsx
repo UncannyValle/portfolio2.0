@@ -75,7 +75,7 @@ export const Hero = ({ user }: { user: User | null }) => {
       </div>
       <div className="mx-auto lg:w-1/3">
         {loading ? (
-          <div>boop</div>
+          <div className="animate-spin text-5xl">🍥</div>
         ) : (
           <DotLottiePlayer
             src="/images/lotties/coder.lottie"
@@ -88,7 +88,6 @@ export const Hero = ({ user }: { user: User | null }) => {
             autoplay
           />
         )}
-        <button onClick={() => setLoading(!loading)}>Poke</button>
       </div>
     </div>
   );
