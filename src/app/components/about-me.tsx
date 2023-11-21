@@ -1,5 +1,4 @@
 "use client";
-
 import { User } from "@prisma/client";
 import { DotLottiePlayer } from "@dotlottie/react-player";
 import { FaJs, FaReact, FaVuejs } from "react-icons/fa";
