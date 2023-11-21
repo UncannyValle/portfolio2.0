@@ -3,8 +3,9 @@ import { ContactForm } from "./components/contact-form";
 import { Hero } from "./components/hero";
 import { Projects } from "./components/projects";
 import prisma from "@/utils/prisma";
+import { Skills } from "./components/skills";
 
-const getUsers = async () => {
+const getUsers = () => {
   const res = prisma.user.findUnique({
     where: {
       id: 1,
@@ -14,9 +15,7 @@ const getUsers = async () => {
   return res;
 };
 
-
-
-const getProjects = async () => {
+const getProjects = () => {
   const res = prisma.project.findMany({
     include: {
       skills: true,
@@ -25,10 +24,16 @@ const getProjects = async () => {
   return res;
 };
 
+const getSkills = () => {
+  const res = prisma.skill.findMany();
+
+  return res;
+};
+
 export default async function Home() {
-  const [user, projects] = await Promise.all([
+  const [user, skills, projects] = await Promise.all([
     getUsers(),
-    // getSkills(),
+    getSkills(),
     getProjects(),
   ]);
 
@@ -36,6 +41,7 @@ export default async function Home() {
     <main className="container mx-auto">
       <Hero user={user} />
       <AboutMe user={user} />
+      <Skills skills={skills} />
       <Projects projects={projects} />
       <ContactForm />
     </main>

@@ -1,8 +1,6 @@
 "use client";
-
 import { User } from "@prisma/client";
 import { DotLottiePlayer } from "@dotlottie/react-player";
-import { FaJs, FaReact, FaVuejs } from "react-icons/fa";
 
 export const AboutMe = ({ user }: { user: User | null }) => {
   const points = user?.description!.split(". ");
@@ -23,20 +21,6 @@ export const AboutMe = ({ user }: { user: User | null }) => {
               </li>
             ))
           )}
-        </ul>
-        <ul className="my-4 flex flex-wrap justify-between">
-          <li className="p-3 text-center transition hover:animate-ping">
-            <FaReact className="mx-auto text-4xl" />
-            <span className="pt-3">React</span>
-          </li>
-          <li className="p-3 text-center hover:animate-bounce">
-            <FaVuejs className="mx-auto text-4xl" />
-            <span className="pt-3">Vue</span>
-          </li>
-          <li className="p-3 text-center">
-            <FaJs className="mx-auto text-4xl transition hover:animate-bounce" />
-            <span className="pt-3">JavaScript</span>
-          </li>
         </ul>
       </div>
       <div className="visible mx-auto lg:hidden lg:w-1/2 ">
