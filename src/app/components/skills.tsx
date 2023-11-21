@@ -5,10 +5,10 @@ import { DotLottiePlayer } from "@dotlottie/react-player";
 
 export const Skills = ({ skills }: { skills: Skill[] }) => {
   return (
-    <div>
-      <h1 className="my-4 text-center text-4xl lg:text-6xl">Skills</h1>
-      <div className="flex justify-center">
-        <table className="table-auto lg:w-1/3">
+    <div className="p-8">
+      <h1 className="my-4 text-center text-4xl  lg:text-6xl">Skills</h1>
+      <div className="flex justify-center flex-wrap">
+        <table className="w-full table-auto lg:w-1/3">
           <colgroup>
             <col className="w-1/3 " />
             <col className="" />
@@ -38,7 +38,7 @@ export const Skills = ({ skills }: { skills: Skill[] }) => {
         </table>
         <DotLottiePlayer
           src="/images/lotties/coder.lottie"
-          className="lg:w-1/3"
+          className="w-full lg:w-1/3"
           loop
           autoplay
         />
