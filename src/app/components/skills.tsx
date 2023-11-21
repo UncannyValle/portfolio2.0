@@ -1,7 +1,7 @@
 "use client";
 import { Skill } from "@prisma/client";
 import { FaBolt } from "react-icons/fa6";
-import { DotLottiePlayer, PlayerEvents } from "@dotlottie/react-player";
+import { DotLottiePlayer } from "@dotlottie/react-player";
 
 export const Skills = ({ skills }: { skills: Skill[] }) => {
   return (
