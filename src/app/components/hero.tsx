@@ -18,7 +18,7 @@ export const Hero = ({ user }: { user: User | null }) => {
   //   }, []);
 
   return (
-    <div className="hero relative bottom-96 mt-20 flex min-h-screen flex-col items-center justify-center p-8">
+    <div className="hero relative mt-20 flex min-h-screen flex-col items-center justify-center p-8">
       <h1 className="inline text-5xl lg:text-7xl">
         Hi, Everyone! I&apos;m Julian
         <div className="inline-block animate-bounce">👋🏼</div>
