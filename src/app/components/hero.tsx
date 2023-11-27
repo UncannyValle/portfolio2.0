@@ -1,26 +1,24 @@
 "use client";
 import { User } from "@prisma/client";
-import gsap from "gsap";
 import Link from "next/link";
-import { useLayoutEffect } from "react";
 import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
 
 export const Hero = ({ user }: { user: User | null }) => {
-  useLayoutEffect(() => {
-    let ctx = gsap.context(() => {
-      gsap.to(".hero", {
-        opacity: 1,
-        bottom: 0,
-        duration: 2,
-        ease: "elastic.out",
-      });
-    });
+  //   useLayoutEffect(() => {
+  //     let ctx = gsap.context(() => {
+  //       gsap.to(".hero", {
+  //         opacity: 1,
+  //         bottom: 0,
+  //         duration: 2,
+  //         ease: "elastic.out",
+  //       });
+  //     });
 
-    return () => ctx.revert();
-  }, []);
+  //     return () => ctx.revert();
+  //   }, []);
 
   return (
-    <div className="hero relative bottom-96 mt-20 flex min-h-screen flex-col items-center justify-center p-8 opacity-0">
+    <div className="hero relative mt-20 flex min-h-screen flex-col items-center justify-center p-8">
       <h1 className="inline text-5xl lg:text-7xl">
         Hi, Everyone! I&apos;m Julian
         <div className="inline-block animate-bounce">👋🏼</div>
