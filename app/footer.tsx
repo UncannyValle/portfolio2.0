@@ -1,4 +1,4 @@
-import prisma from "@/utils/prisma";
+import prisma from "./utils/prisma";
 import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
 
 export const Footer = async () => {

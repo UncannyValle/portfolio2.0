@@ -2,7 +2,7 @@ import { AboutMe } from "./components/about-me";
 import { ContactForm } from "./components/contact-form";
 import { Hero } from "./components/hero";
 import { Projects } from "./components/projects";
-import prisma from "@/utils/prisma";
+import prisma from "./utils/prisma";
 import { Skills } from "./components/skills";
 
 const getUsers = () => {

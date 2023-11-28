@@ -1,4 +1,4 @@
-import prisma from "@/utils/prisma";
+import prisma from "../../utils/prisma";
 import Image from "next/image";
 import Link from "next/link";
 import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";

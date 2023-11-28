@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { ThemeSwitcher } from "../darkMode/theme-switcher";
 import { useEffect, useState } from "react";
-import { debounce } from "@/utils/debounce";
+import { debounce } from "../../utils/debounce";
 
 export const Navbar = () => {
   const [visible, setVisible] = useState(true);
@@ -39,13 +39,13 @@ export const Navbar = () => {
         <div className="flex items-center justify-between">
           <Link
             href="/#"
-            className="px-4 py-6 text-xl lg:text-3xl transition hover:scale-110 hover:text-purple-400"
+            className="px-4 py-6 text-xl transition hover:scale-110 hover:text-purple-400 lg:text-3xl"
             onClick={() => setVisible(true)}
           >
             {`<Julian Valle.dev />`}
           </Link>
           <button
-            className={`z-10 mr-8 lg:hidden flex h-8 w-8 cursor-pointer  flex-col flex-wrap justify-around`}
+            className={`z-10 mr-8 flex h-8 w-8 cursor-pointer flex-col  flex-wrap justify-around lg:hidden`}
             onClick={() => setIsOpen(!isOpen)}
           >
             <div
