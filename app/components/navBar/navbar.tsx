@@ -12,14 +12,15 @@ export const Navbar = () => {
   const handleScroll = debounce(
     () => {
       const currentScrollPos = window.scrollY;
-      const checkScroll = prevScrollPos > currentScrollPos;
+      const checkScroll =
+        prevScrollPos > currentScrollPos || currentScrollPos < 100;
 
       setVisible(checkScroll);
       !checkScroll ? setIsOpen(false) : null;
 
       setPrevScrollPos(currentScrollPos);
     },
-    100,
+    250,
     false,
   );
 
