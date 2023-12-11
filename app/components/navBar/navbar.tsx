@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { ThemeSwitcher } from "../darkMode/theme-switcher";
-import { useEffect, useState } from "react";
+import { SyntheticEvent, useEffect, useState } from "react";
 import { debounce } from "../../utils/debounce";
 
 export const Navbar = () => {
@@ -9,10 +9,13 @@ export const Navbar = () => {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
 
+  type Event = MouseEvent | TouchEvent | SyntheticEvent;
+
   const handleScroll = debounce(
     () => {
       const currentScrollPos = window.scrollY;
-      const checkScroll = prevScrollPos > currentScrollPos;
+      const checkScroll =
+        prevScrollPos > currentScrollPos || currentScrollPos < 100;
 
       setVisible(checkScroll);
       !checkScroll ? setIsOpen(false) : null;
@@ -23,11 +26,21 @@ export const Navbar = () => {
     false,
   );
 
+  const handleClickOutside = (event: Event) => {
+    if (isOpen && !(event.target as HTMLElement).closest(".navbar")) {
+      setIsOpen(false);
+    }
+  };
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
+    document.body.addEventListener("click", handleClickOutside);
 
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [handleScroll]);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      document.body.removeEventListener("click", handleClickOutside);
+    };
+  }, [handleScroll, isOpen]);
 
   return (
     <header
