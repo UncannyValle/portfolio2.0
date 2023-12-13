@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Providers } from "./providers";
 import { Navbar } from "./components/navBar/navbar";
-import { Analytics } from "@vercel/analytics/react";
 import { Footer } from "./footer";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,7 +26,7 @@ export default function RootLayout({
         <Providers attribute="class" defaultTheme="system" enableSystem>
           <Navbar />
           {children}
-          <Analytics />
+          <SpeedInsights />
           <Footer />
         </Providers>
       </body>
