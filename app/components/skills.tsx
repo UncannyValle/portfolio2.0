@@ -7,7 +7,7 @@ export const Skills = ({ skills }: { skills: Skill[] }) => {
   return (
     <div className="p-8">
       <h1 className="my-4 text-center text-4xl  lg:text-6xl">Skills</h1>
-      <div className="flex justify-center flex-wrap">
+      <div className="flex justify-evenly flex-wrap">
         <table className="w-full table-auto lg:w-1/3">
           <colgroup>
             <col className="w-1/3 " />
