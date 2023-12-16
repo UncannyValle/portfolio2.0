@@ -1,13 +1,12 @@
-"use client";
 import { User } from "@prisma/client";
-import { DotLottiePlayer } from "@dotlottie/react-player";
+import DotLottie from "../components/third-party/dot-lottie-player";
 
 export const AboutMe = ({ user }: { user: User | null }) => {
   const points = user?.description!.split(". ");
   return (
     <div className="flex flex-wrap items-center p-8" id="about-me">
       <div className="mx-auto hidden lg:block lg:w-1/3 ">
-        <DotLottiePlayer src="/images/lotties/coder2.lottie" loop autoplay />
+        <DotLottie src="/images/lotties/coder2.lottie" />
       </div>
       <div className="lg:w-1/2">
         <h2 className="text-4xl lg:text-6xl">A bit about me</h2>
@@ -24,7 +23,7 @@ export const AboutMe = ({ user }: { user: User | null }) => {
         </ul>
       </div>
       <div className="visible mx-auto lg:hidden lg:w-1/2 ">
-        <DotLottiePlayer src="/images/lotties/coder2.lottie" loop autoplay />
+        <DotLottie src="/images/lotties/coder2.lottie" />
       </div>
     </div>
   );
