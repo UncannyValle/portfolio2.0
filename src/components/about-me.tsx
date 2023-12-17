@@ -5,7 +5,7 @@ export const AboutMe = ({ user }: { user: User | null }) => {
   const points = user?.description!.split(". ");
   return (
     <div className="flex flex-wrap items-center p-8" id="about-me">
-      <div className="mx-auto hidden lg:block lg:w-1/3 ">
+      <div className="mx-auto hidden lg:inline-block lg:w-1/3 ">
         <DotLottie src="/images/lotties/coder2.lottie" />
       </div>
       <div className="lg:w-1/2">

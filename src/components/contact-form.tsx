@@ -18,7 +18,7 @@ export const ContactForm = () => {
 
   return (
     <div
-      className="flex min-h-screen flex-wrap items-center justify-center"
+      className="flex min-h-screen flex-wrap items-center justify-center pt-20"
       id="contact"
     >
       <div className="p-8 lg:w-1/2">

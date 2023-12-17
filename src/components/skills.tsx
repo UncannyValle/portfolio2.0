@@ -4,7 +4,7 @@ import DotLottie from "./third-party/dot-lottie-player";
 
 export const Skills = ({ skills }: { skills: Skill[] }) => {
   return (
-    <div className="p-8">
+    <div className="pt-20 p-8" id="skills">
       <h1 className="my-4 text-center text-4xl  lg:text-6xl">Skills</h1>
       <div className="flex flex-wrap justify-evenly">
         <table className="w-full table-auto lg:w-1/3">
