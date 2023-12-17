@@ -1,21 +1,8 @@
-"use client";
 import { User } from "@prisma/client";
 import Link from "next/link";
 import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
 
 export const Hero = ({ user }: { user: User | null }) => {
-  //   useLayoutEffect(() => {
-  //     let ctx = gsap.context(() => {
-  //       gsap.to(".hero", {
-  //         opacity: 1,
-  //         bottom: 0,
-  //         duration: 2,
-  //         ease: "elastic.out",
-  //       });
-  //     });
-
-  //     return () => ctx.revert();
-  //   }, []);
 
   return (
     <div className="hero relative mt-20 flex min-h-screen flex-col items-center justify-center p-8">

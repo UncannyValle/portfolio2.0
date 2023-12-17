@@ -2,7 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Providers } from "./providers";
-import { Navbar } from "./components/navBar/navbar";
+import { Navbar } from "../components/navBar/navbar";
 import { Footer } from "./footer";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 

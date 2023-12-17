@@ -1,13 +1,12 @@
-"use client";
 import { Skill } from "@prisma/client";
 import { FaBolt } from "react-icons/fa6";
-import { DotLottiePlayer } from "@dotlottie/react-player";
+import DotLottie from "./third-party/dot-lottie-player";
 
 export const Skills = ({ skills }: { skills: Skill[] }) => {
   return (
-    <div className="p-8">
+    <div className="pt-20 p-8" id="skills">
       <h1 className="my-4 text-center text-4xl  lg:text-6xl">Skills</h1>
-      <div className="flex justify-center flex-wrap">
+      <div className="flex flex-wrap justify-evenly">
         <table className="w-full table-auto lg:w-1/3">
           <colgroup>
             <col className="w-1/3 " />
@@ -36,12 +35,7 @@ export const Skills = ({ skills }: { skills: Skill[] }) => {
             })}
           </tbody>
         </table>
-        <DotLottiePlayer
-          src="/images/lotties/coder.lottie"
-          className="w-full lg:w-1/3"
-          loop
-          autoplay
-        />
+        <DotLottie src="/images/lotties/coder.lottie" />
       </div>
     </div>
   );

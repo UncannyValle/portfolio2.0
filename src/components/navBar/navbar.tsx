@@ -13,12 +13,13 @@ export const Navbar = () => {
 
   const handleScroll = debounce(
     () => {
+      setIsOpen(false);
+
       const currentScrollPos = window.scrollY;
       const checkScroll =
         prevScrollPos > currentScrollPos || currentScrollPos < 100;
 
       setVisible(checkScroll);
-      !checkScroll ? setIsOpen(false) : null;
 
       setPrevScrollPos(currentScrollPos);
     },
@@ -26,19 +27,11 @@ export const Navbar = () => {
     false,
   );
 
-  const handleClickOutside = (event: Event) => {
-    if (isOpen && !(event.target as HTMLElement).closest(".navbar")) {
-      setIsOpen(false);
-    }
-  };
-
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-    document.body.addEventListener("click", handleClickOutside);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      document.body.removeEventListener("click", handleClickOutside);
     };
   }, [handleScroll, isOpen]);
 
@@ -53,7 +46,6 @@ export const Navbar = () => {
           <Link
             href="/#"
             className="px-4 py-6 text-xl transition hover:scale-110 hover:text-purple-400 lg:text-3xl"
-            onClick={() => setVisible(true)}
           >
             {`<Julian Valle.dev />`}
           </Link>
@@ -81,51 +73,46 @@ export const Navbar = () => {
             <Link
               href="/#about-me"
               className="rounded px-4 py-3 transition ease-in-out hover:scale-110 active:scale-100 dark:hover:bg-purple-600"
-              onClick={() => setVisible(true)}
             >
               About
             </Link>
             <Link
+              href="/#skills"
+              className="rounded px-4 py-3 transition ease-in-out hover:scale-110 active:scale-100 dark:hover:bg-purple-600"
+            >
+              Skills
+            </Link>
+            <Link
               href="/#projects"
               className="rounded px-4 py-3 duration-200 hover:scale-110 active:scale-100 dark:hover:bg-purple-600"
-              onClick={() => setVisible(true)}
             >
               Projects
             </Link>
             <Link
               href="/#contact"
               className="rounded px-4 py-3 duration-200 hover:scale-110 active:scale-100 dark:hover:bg-purple-600"
-              onClick={() => setVisible(true)}
             >
               Contact
             </Link>
             <ThemeSwitcher />
           </div>
 
+          {/* Mobile navbar */}
           <div
             className={`right-0 ${
               isOpen ? "" : "translate-x-full"
-            } absolute top-20 flex h-72 w-80 flex-col items-center justify-between bg-white shadow-lg transition dark:bg-black lg:hidden`}
+            } absolute top-10 -z-30 flex h-screen w-screen flex-col items-center justify-evenly bg-slate-50 shadow-lg transition dark:bg-black lg:hidden `}
           >
-            <Link
-              href="/#about-me"
-              className="rounded px-4 py-3 transition ease-in-out hover:scale-110 active:scale-100 dark:hover:bg-purple-600"
-              onClick={() => setVisible(true)}
-            >
+            <Link href="/#about-me" className="py-8">
               About
             </Link>
-            <Link
-              href="/#projects"
-              className="rounded px-4 py-3 duration-200 hover:scale-110 active:scale-100 dark:hover:bg-purple-600"
-              onClick={() => setVisible(true)}
-            >
+            <Link href="/#skills" className="py-8">
+              Skills
+            </Link>
+            <Link href="/#projects" className="py-8">
               Projects
             </Link>
-            <Link
-              href="/#contact"
-              className="rounded px-4 py-3 duration-200 hover:scale-110 active:scale-100 dark:hover:bg-purple-600"
-              onClick={() => setVisible(true)}
-            >
+            <Link href="/#contact" className="py-8">
               Contact
             </Link>
             <ThemeSwitcher />
