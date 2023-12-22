@@ -9,8 +9,6 @@ export const Navbar = () => {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
 
-  type Event = MouseEvent | TouchEvent | SyntheticEvent;
-
   const handleScroll = debounce(
     () => {
       setIsOpen(false);
@@ -89,6 +87,12 @@ export const Navbar = () => {
               Projects
             </Link>
             <Link
+              href="/#careers"
+              className="rounded px-4 py-3 duration-200 hover:scale-110 active:scale-100 dark:hover:bg-purple-600"
+            >
+              Careers
+            </Link>
+            <Link
               href="/#contact"
               className="rounded px-4 py-3 duration-200 hover:scale-110 active:scale-100 dark:hover:bg-purple-600"
             >
@@ -111,6 +115,9 @@ export const Navbar = () => {
             </Link>
             <Link href="/#projects" className="py-8">
               Projects
+            </Link>
+            <Link href="/#careers" className="py-8">
+              Careers
             </Link>
             <Link href="/#contact" className="py-8">
               Contact

@@ -8,30 +8,37 @@ interface ProjectWithSkills extends Project {
 export const Projects = ({ projects }: { projects: ProjectWithSkills[] }) => {
   return (
     <div className="w-full p-8 pt-20" id="projects">
-      <h1 className="my-4 text-center text-4xl lg:text-6xl">Projects</h1>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+      <h1 className="mb-12 text-center text-4xl  lg:text-6xl">Projects</h1>
+      <div className="flex flex-col">
         {projects.map((project) => {
           return (
             <a
               key={project.slug}
-              className="border-1 rounded-2xl border-solid border-slate-400 p-4 text-center shadow-md  transition hover:shadow-2xl"
+              className="mb-16 flex w-full flex-col items-center justify-evenly rounded-2xl border-2 border-solid border-slate-400 p-4 transition ease-in hover:scale-105 hover:border-0 hover:shadow-2xl dark:shadow-purple-400 md:flex-row"
               href={`/projects/${project.slug}`}
             >
-              <Image
-                src={`/images/projects/${project.slug}/main.png`}
-                alt={project.slug}
-                width={600}
-                height={400}
-                className="mx-auto mb-2 h-[100px] w-[200px] object-cover lg:h-[200px] lg:w-[300px]"
-              />
-              <p className="text-xl font-bold">{project.title}</p>
-              <div>
-                {project.skills.map((skill, index) => (
-                  <div key={`${skill.id}`} className="inline">
-                    <span> {skill.name} </span>
-                    {index === project.skills.length - 1 ? "" : "|"}
-                  </div>
-                ))}
+              <div className="relative mx-auto h-[150px] w-[250px] md:mx-0 lg:h-[400px] lg:w-[500px]">
+                <Image
+                  src={`/images/projects/${project.slug}/main.png`}
+                  alt={project.slug}
+                  fill
+                  className="object-cover p-4 "
+                />
+              </div>
+
+              <div className=" md:w-1/3">
+                <h2 className="font-bold md:text-4xl">{project.title}</h2>
+                <div>
+                  <span className="font-bold">Skills:</span>
+                  {project.skills.map((skill, index) => (
+                    <span key={`${skill.id}`}>
+                      {" "}
+                      {skill.name}{" "}
+                      {index === project.skills.length - 1 ? "" : "|"}
+                    </span>
+                  ))}
+                </div>
+                <p className="line-clamp-3  pt-8">{project.summary}</p>
               </div>
             </a>
           );
