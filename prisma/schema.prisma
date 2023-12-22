@@ -23,15 +23,16 @@ model User {
 }
 
 model Project {
-    id      Int     @id @default(autoincrement())
+    id      Int      @id @default(autoincrement())
     title   String
-    slug    String  @unique
+    slug    String   @unique
     github  String?
     link    String?
-    summary String? @db.MediumText
-    goal    String? @db.LongText
-    outcome String? @db.LongText
+    summary String?  @db.MediumText
+    goal    String?  @db.LongText
+    outcome String?  @db.LongText
     skills  Skill[]
+    Career  Career[]
 }
 
 model Skill {
@@ -42,4 +43,18 @@ model Skill {
     iconBrand  String?
     projectId  Int?
     projects   Project[]
+    Career     Career[]
+    careerId   Int?
+}
+
+model Career {
+    id                 Int       @id @default(autoincrement())
+    name               String
+    startDate          DateTime  @db.Date
+    endDate            DateTime  @db.Date
+    summary            String    @db.MediumText
+    associatedProjects Project[]
+    associatedSkills   Skill[]
+    projectId          Int?
+    careerId           Int?
 }

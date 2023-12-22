@@ -4,7 +4,7 @@ import DotLottie from "../components/third-party/dot-lottie-player";
 export const AboutMe = ({ user }: { user: User | null }) => {
   const points = user?.description!.split(". ");
   return (
-    <div className="flex flex-wrap items-center p-8" id="about-me">
+    <div className="flex flex-wrap items-center p-8 pt-12" id="about-me">
       <div className="mx-auto hidden lg:inline-block lg:w-1/3 ">
         <DotLottie src="/images/lotties/coder2.lottie" />
       </div>

@@ -11,8 +11,9 @@ export const Footer = async () => {
   return (
     <footer className="flex flex-wrap items-center justify-center p-8 text-slate-500">
       <div className="inline-block">
-        Designed and coded by me using VS Code. Built with Next.js 13, Prisma,
-        and Tailwind. Deployed in Vercel and PlanetScale.
+        Designed and coded by me &quot;Julian Valle&quot; using VS Code. Built
+        with Next.js 13, Prisma, and Tailwind. Deployed in Vercel and
+        PlanetScale.
       </div>
 
       <div className="inline-block">
