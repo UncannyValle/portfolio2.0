@@ -12,8 +12,6 @@ export const Careers = ({ careers }: { careers: CareerWithAttr[] | [] }) => {
       <h1 className="mb-12 text-center text-4xl lg:text-6xl">Careers</h1>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
         {careers.map((career) => {
-          const slug = career.name;
-
           return (
             <div
               key={career.id}
@@ -21,7 +19,7 @@ export const Careers = ({ careers }: { careers: CareerWithAttr[] | [] }) => {
             >
               <div className="relative mx-auto mb-2 h-[50px] w-[50px] rounded-full lg:h-[100px] lg:w-[100px]">
                 <Image
-                  src={`/images/careers/${slug}.png`}
+                  src={`/images/careers/${career.name.toLowerCase()}.png`}
                   alt={career.name}
                   fill
                   className="rounded-full object-cover"
