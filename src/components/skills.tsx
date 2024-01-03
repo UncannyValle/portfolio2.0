@@ -1,10 +1,19 @@
+"use client";
 import { Skill } from "@prisma/client";
 import { FaBolt } from "react-icons/fa6";
+import { motion } from "framer-motion";
 import DotLottie from "./third-party/dot-lottie-player";
 
 export const Skills = ({ skills }: { skills: Skill[] }) => {
   return (
-    <div className="pt-12 p-8" id="skills">
+    <motion.div
+      initial={{ marginRight: "-20vw", opacity: 0 }}
+      whileInView={{ marginRight: 0, opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ type: "spring", duration: 1.5 }}
+      className="p-8 pt-12"
+      id="skills"
+    >
       <h1 className="mb-12 text-center text-4xl  lg:text-6xl">Skills</h1>
       <div className="flex flex-wrap justify-evenly">
         <table className="w-full table-auto lg:w-1/3">
@@ -37,6 +46,6 @@ export const Skills = ({ skills }: { skills: Skill[] }) => {
         </table>
         <DotLottie src="/images/lotties/coder.lottie" />
       </div>
-    </div>
+    </motion.div>
   );
 };

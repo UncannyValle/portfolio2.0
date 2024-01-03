@@ -9,6 +9,7 @@ export const Hero = ({ user }: { user: User | null }) => {
     <motion.div
       initial={{ opacity: 0, translateY: 50 }}
       animate={{ opacity: 1, translateY: 0 }}
+      transition={{ duration: 1 }}
     >
       <div className="hero relative mt-20 flex min-h-screen flex-col items-center justify-center p-8">
         <h1 className="inline text-5xl lg:text-7xl">
