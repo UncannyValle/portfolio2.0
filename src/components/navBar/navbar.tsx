@@ -1,43 +1,42 @@
 "use client";
 import Link from "next/link";
 import { ThemeSwitcher } from "../darkMode/theme-switcher";
-import { SyntheticEvent, useEffect, useState } from "react";
-import { debounce } from "../../utils/debounce";
+import { useState } from "react";
+import {
+  MotionValue,
+  motion,
+  useMotionValueEvent,
+  useScroll,
+} from "framer-motion";
 
 export const Navbar = () => {
   const [visible, setVisible] = useState(true);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleScroll = debounce(
-    () => {
-      setIsOpen(false);
+  const { scrollY } = useScroll();
 
-      const currentScrollPos = window.scrollY;
-      const checkScroll =
-        prevScrollPos > currentScrollPos || currentScrollPos < 100;
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    setIsOpen(false);
 
-      setVisible(checkScroll);
+    const currentScrollPos = latest.valueOf();
+    const checkScroll = prevScrollPos > currentScrollPos;
 
-      setPrevScrollPos(currentScrollPos);
-    },
-    100,
-    false,
-  );
+    setVisible(checkScroll);
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    setPrevScrollPos(currentScrollPos);
+  });
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [handleScroll, isOpen]);
+  const variants = {
+    visible: { opacity: 1, y: 0 },
+    hidden: { opacity: 0, y: -25 },
+  };
 
   return (
-    <header
-      className={`${
-        visible ? "top-0" : "-top-24"
-      } fixed z-10 w-full bg-slate-50 py-2 duration-300 ease-out dark:bg-slate-950`}
+    <motion.header
+      variants={variants}
+      animate={visible ? "visible" : "hidden"}
+      className="fixed top-0 z-10 w-full bg-slate-50  py-2 dark:bg-slate-950"
     >
       <nav className="container mx-auto">
         <div className="flex items-center justify-between">
@@ -126,6 +125,6 @@ export const Navbar = () => {
           </div>
         </div>
       </nav>
-    </header>
+    </motion.header>
   );
 };
