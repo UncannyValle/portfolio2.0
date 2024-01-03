@@ -7,11 +7,11 @@ import { motion } from "framer-motion";
 export const Hero = ({ user }: { user: User | null }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, translateY: 50 }}
-      animate={{ opacity: 1, translateY: 0 }}
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1 }}
     >
-      <div className="hero relative mt-20 flex min-h-screen flex-col items-center justify-center p-8">
+      <div className="hero flex min-h-screen flex-col items-center justify-center p-8">
         <h1 className="inline text-5xl lg:text-7xl">
           Hi, Everyone! I&apos;m Julian?
           <div className="inline-block animate-bounce">👋🏼</div>

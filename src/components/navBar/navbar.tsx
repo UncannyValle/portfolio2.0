@@ -2,12 +2,7 @@
 import Link from "next/link";
 import { ThemeSwitcher } from "../darkMode/theme-switcher";
 import { useState } from "react";
-import {
-  MotionValue,
-  motion,
-  useMotionValueEvent,
-  useScroll,
-} from "framer-motion";
+import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 
 export const Navbar = () => {
   const [visible, setVisible] = useState(true);
@@ -18,9 +13,11 @@ export const Navbar = () => {
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsOpen(false);
+    console.log(latest);
 
     const currentScrollPos = latest.valueOf();
-    const checkScroll = prevScrollPos > currentScrollPos;
+    const checkScroll =
+      prevScrollPos > currentScrollPos || currentScrollPos < 100;
 
     setVisible(checkScroll);
 
@@ -36,18 +33,19 @@ export const Navbar = () => {
     <motion.header
       variants={variants}
       animate={visible ? "visible" : "hidden"}
-      className="fixed top-0 z-10 w-full bg-slate-50  py-2 dark:bg-slate-950"
+      className="fixed w-full top-0 bg-slate-50 dark:bg-slate-950"
     >
-      <nav className="container mx-auto">
-        <div className="flex items-center justify-between">
+      <nav className=" mx-auto py-2">
+        <div className="flex items-center justify-between w-full">
           <Link
             href="/#"
             className="px-4 py-6 text-xl transition hover:scale-110 hover:text-purple-400 lg:text-3xl"
           >
             {`<Julian Valle.dev />`}
           </Link>
+          {/* hamburger */}
           <button
-            className={`z-10 mr-8 flex h-8 w-8 cursor-pointer flex-col  flex-wrap justify-around lg:hidden`}
+            className="flex h-8 w-8 cursor-pointer flex-col flex-wrap justify-around lg:hidden"
             onClick={() => setIsOpen(!isOpen)}
           >
             <div
@@ -101,11 +99,7 @@ export const Navbar = () => {
           </div>
 
           {/* Mobile navbar */}
-          <div
-            className={`right-0 ${
-              isOpen ? "" : "translate-x-full"
-            } absolute top-10 -z-30 flex h-screen w-screen flex-col items-center justify-evenly bg-slate-50 shadow-lg transition dark:bg-black lg:hidden `}
-          >
+          <div className="absolute top-10 -z-30 flex hidden h-screen w-screen flex-col items-center justify-evenly bg-slate-50 shadow-lg transition dark:bg-black">
             <Link href="/#about-me" className="py-8">
               About
             </Link>
