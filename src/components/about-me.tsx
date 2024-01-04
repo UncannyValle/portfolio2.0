@@ -7,11 +7,11 @@ export const AboutMe = ({ user }: { user: User | null }) => {
   const points = user?.description!.split(". ");
   return (
     <motion.div
-      initial={{ marginLeft: "-20vw", opacity: 0 }}
-      whileInView={{ marginLeft: 0, opacity: 1 }}
+      initial={{ x: -100, opacity: 0 }}
+      whileInView={{ x: 0, opacity: 1 }}
       viewport={{ once: true }}
-      transition={{ type:"spring", duration: 1.5 }}
-      className="flex flex-wrap items-center w-full p-8 pt-12"
+      transition={{ type: "spring", duration: 2 }}
+      className="flex w-full flex-wrap items-center p-8 pt-20 mb-8"
       id="about-me"
     >
       <div className="mx-auto hidden lg:inline-block lg:w-1/3 ">

@@ -7,10 +7,10 @@ import DotLottie from "./third-party/dot-lottie-player";
 export const Skills = ({ skills }: { skills: Skill[] }) => {
   return (
     <motion.div
-      initial={{ marginRight: "-20vw", opacity: 0 }}
-      whileInView={{ marginRight: 0, opacity: 1 }}
+      initial={{ x: 100, opacity: 0 }}
+      whileInView={{ x: 0, opacity: 1 }}
       viewport={{ once: true }}
-      transition={{ type: "spring", duration: 1.5 }}
+      transition={{ type: "spring", duration: 2 }}
       className="p-8 pt-12"
       id="skills"
     >

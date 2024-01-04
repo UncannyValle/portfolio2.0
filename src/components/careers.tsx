@@ -1,5 +1,7 @@
+"use client";
 import Image from "next/image";
 import { Project, Skill, Career } from "@prisma/client";
+import { useAnimate, stagger, motion } from "framer-motion";
 
 interface CareerWithAttr extends Career {
   associatedProjects: Project[];
@@ -7,21 +9,54 @@ interface CareerWithAttr extends Career {
 }
 
 export const Careers = ({ careers }: { careers: CareerWithAttr[] | [] }) => {
+  const careerList = {
+    visible: {
+      opacity: 1,
+      transition: {
+        when: "beforeChildren",
+        staggerChildren: 0.3,
+      },
+    },
+    hidden: {
+      opacity: 0,
+      transition: {
+        when: "afterChildren",
+      },
+    },
+  };
+
+  const items = {
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { type: "spring", duration: 3 },
+    },
+    hidden: { opacity: 0, scale: 1.5 },
+  };
+
   return (
     <div className="w-full p-8 pt-20" id="careers">
       <h1 className="mb-12 text-center text-4xl lg:text-6xl">Careers</h1>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={careerList}
+        className="grid grid-cols-1 gap-4 md:grid-cols-3"
+      >
         {careers.map((career) => {
           return (
-            <div
+            <motion.div
               key={career.id}
-              className="mx-8 rounded-2xl border-2 border-solid border-slate-400 p-4 text-center transition ease-in hover:scale-105 hover:border-0 hover:shadow-2xl dark:shadow-purple-400"
+              className="mx-8 rounded-2xl border-2 border-solid border-slate-400 p-4 text-center dark:shadow-purple-400"
+              variants={items}
             >
               <div className="relative mx-auto mb-2 h-[50px] w-[50px] rounded-full lg:h-[100px] lg:w-[100px]">
                 <Image
                   src={`/images/careers/${career.name.toLowerCase()}.png`}
                   alt={career.name}
                   fill
+                  sizes="(min-width: 1024px) 100px, 50px"
                   className="rounded-full object-cover"
                 />
               </div>
@@ -62,10 +97,10 @@ export const Careers = ({ careers }: { careers: CareerWithAttr[] | [] }) => {
               </div>
 
               <p className="pt-4 text-sm">{career.summary}</p>
-            </div>
+            </motion.div>
           );
         })}
-      </div>
+      </motion.div>
     </div>
   );
 };

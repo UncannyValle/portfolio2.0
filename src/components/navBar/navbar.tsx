@@ -13,7 +13,6 @@ export const Navbar = () => {
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsOpen(false);
-    console.log(latest);
 
     const currentScrollPos = latest.valueOf();
     const checkScroll =
@@ -33,10 +32,10 @@ export const Navbar = () => {
     <motion.header
       variants={variants}
       animate={visible ? "visible" : "hidden"}
-      className="fixed w-full top-0 bg-slate-50 dark:bg-slate-950"
+      className="fixed top-0 z-10 w-full bg-slate-50 py-2  dark:bg-slate-950"
     >
-      <nav className=" mx-auto py-2">
-        <div className="flex items-center justify-between w-full">
+      <nav className="container mx-auto py-2">
+        <div className="flex w-full items-center justify-between">
           <Link
             href="/#"
             className="px-4 py-6 text-xl transition hover:scale-110 hover:text-purple-400 lg:text-3xl"
@@ -64,7 +63,7 @@ export const Navbar = () => {
               }`}
             />
           </button>
-          <div className="hidden w-1/3 items-center justify-between lg:flex">
+          <div className="hidden w-1/2 items-center justify-between lg:flex">
             <Link
               href="/#about-me"
               className="rounded px-4 py-3 transition ease-in-out hover:scale-110 active:scale-100 dark:hover:bg-purple-600"
