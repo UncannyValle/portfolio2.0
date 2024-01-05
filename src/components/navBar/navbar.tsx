@@ -3,6 +3,8 @@ import Link from "next/link";
 import { ThemeSwitcher } from "../darkMode/theme-switcher";
 import { useState } from "react";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
+import { MobileNavbar } from "./mobileNavbar";
+import { HamburgerMenu } from "./hamburgerMenu";
 
 export const Navbar = () => {
   const [visible, setVisible] = useState(true);
@@ -32,10 +34,14 @@ export const Navbar = () => {
     <motion.header
       variants={variants}
       animate={visible ? "visible" : "hidden"}
-      className="fixed top-0 z-10 w-full bg-slate-50 py-2  dark:bg-slate-950"
+      className="fixed top-0 z-10 w-screen bg-slate-50 py-2  dark:bg-slate-950"
     >
       <nav className="container mx-auto py-2">
-        <div className="flex w-full items-center justify-between">
+        <motion.div
+          initial={false}
+          animate={isOpen ? "open" : "closed"}
+          className="flex w-full items-center justify-between"
+        >
           <Link
             href="/#"
             className="px-4 py-6 text-xl transition hover:scale-110 hover:text-purple-400 lg:text-3xl"
@@ -43,26 +49,8 @@ export const Navbar = () => {
             {`<Julian Valle.dev />`}
           </Link>
           {/* hamburger */}
-          <button
-            className="flex h-8 w-8 cursor-pointer flex-col flex-wrap justify-around lg:hidden"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            <div
-              className={`block h-[0.35rem] w-8 origin-[1px] rounded bg-black transition-all dark:bg-white ${
-                isOpen ? "rotate-45" : "rotate-0"
-              }`}
-            />
-            <div
-              className={`block h-[0.35rem] w-8 origin-[1px] rounded bg-black transition-all dark:bg-white ${
-                isOpen ? "translate-x-28 bg-transparent" : "translate-x-0"
-              }`}
-            />
-            <div
-              className={`block h-[0.35rem] w-8 origin-[1px] rounded bg-black transition-all dark:bg-white ${
-                isOpen ? "rotate-[-45deg]" : "rotate-0"
-              }`}
-            />
-          </button>
+          <HamburgerMenu toggle={() => setIsOpen(!isOpen) as any} />
+
           <div className="hidden w-1/2 items-center justify-between lg:flex">
             <Link
               href="/#about-me"
@@ -98,25 +86,8 @@ export const Navbar = () => {
           </div>
 
           {/* Mobile navbar */}
-          <div className="absolute top-10 -z-30 flex hidden h-screen w-screen flex-col items-center justify-evenly bg-slate-50 shadow-lg transition dark:bg-black">
-            <Link href="/#about-me" className="py-8">
-              About
-            </Link>
-            <Link href="/#skills" className="py-8">
-              Skills
-            </Link>
-            <Link href="/#projects" className="py-8">
-              Projects
-            </Link>
-            <Link href="/#careers" className="py-8">
-              Careers
-            </Link>
-            <Link href="/#contact" className="py-8">
-              Contact
-            </Link>
-            <ThemeSwitcher />
-          </div>
-        </div>
+          <MobileNavbar isOpen={isOpen} />
+        </motion.div>
       </nav>
     </motion.header>
   );
