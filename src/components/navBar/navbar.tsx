@@ -34,9 +34,9 @@ export const Navbar = () => {
     <motion.header
       variants={variants}
       animate={visible ? "visible" : "hidden"}
-      className="fixed top-0 z-10 w-screen bg-slate-50 py-2  dark:bg-slate-950"
+      className="fixed  top-0 z-10 w-screen bg-slate-50 py-2  dark:bg-slate-950"
     >
-      <nav className="container mx-auto py-2">
+      <nav className="container mx-auto px-8">
         <motion.div
           initial={false}
           animate={isOpen ? "open" : "closed"}
@@ -54,31 +54,31 @@ export const Navbar = () => {
           <div className="hidden w-1/2 items-center justify-between lg:flex">
             <Link
               href="/#about-me"
-              className="rounded px-4 py-3 transition ease-in-out hover:scale-110 active:scale-100 dark:hover:bg-purple-600"
+              className="rounded-full px-4 py-3 transition ease-in-out hover:scale-110 active:scale-100 dark:hover:bg-purple-600"
             >
               About
             </Link>
             <Link
               href="/#skills"
-              className="rounded px-4 py-3 transition ease-in-out hover:scale-110 active:scale-100 dark:hover:bg-purple-600"
+              className="rounded-full px-4 py-3 transition ease-in-out hover:scale-110 active:scale-100 dark:hover:bg-purple-600"
             >
               Skills
             </Link>
             <Link
               href="/#projects"
-              className="rounded px-4 py-3 duration-200 hover:scale-110 active:scale-100 dark:hover:bg-purple-600"
+              className="rounded-full px-4 py-3 duration-200 hover:scale-110 active:scale-100 dark:hover:bg-purple-600"
             >
               Projects
             </Link>
             <Link
               href="/#careers"
-              className="rounded px-4 py-3 duration-200 hover:scale-110 active:scale-100 dark:hover:bg-purple-600"
+              className="rounded-full px-4 py-3 duration-200 hover:scale-110 active:scale-100 dark:hover:bg-purple-600"
             >
               Careers
             </Link>
             <Link
               href="/#contact"
-              className="rounded px-4 py-3 duration-200 hover:scale-110 active:scale-100 dark:hover:bg-purple-600"
+              className="rounded-full px-4 py-3 duration-200 hover:scale-110 active:scale-100 dark:hover:bg-purple-600"
             >
               Contact
             </Link>

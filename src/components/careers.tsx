@@ -35,7 +35,7 @@ export const Careers = ({ careers }: { careers: CareerWithAttr[] | [] }) => {
   };
 
   return (
-    <div className="w-full p-8 pt-20" id="careers">
+    <div className="container overflow-hidden p-8 pt-20" id="careers">
       <h1 className="mb-12 text-center text-4xl lg:text-6xl">Careers</h1>
       <motion.div
         initial="hidden"

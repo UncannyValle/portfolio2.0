@@ -16,7 +16,7 @@ interface HamburgerMenuProps {
 
 export const HamburgerMenu = ({ toggle }: HamburgerMenuProps) => {
   return (
-    <button onClick={toggle}>
+    <button onClick={toggle} className="inline-block lg:hidden">
       <svg width="23" height="23" viewBox="0 0 23 23">
         <Path
           variants={{
