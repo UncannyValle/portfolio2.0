@@ -1,100 +1,84 @@
 "use client";
 import Link from "next/link";
 import { ThemeSwitcher } from "../darkMode/theme-switcher";
-import { SyntheticEvent, useEffect, useState } from "react";
-import { debounce } from "../../utils/debounce";
+import { useState } from "react";
+import { motion, useMotionValueEvent, useScroll } from "framer-motion";
+import { MobileNavbar } from "./mobileNavbar";
+import { HamburgerMenu } from "./hamburgerMenu";
 
 export const Navbar = () => {
   const [visible, setVisible] = useState(true);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleScroll = debounce(
-    () => {
-      setIsOpen(false);
+  const { scrollY } = useScroll();
 
-      const currentScrollPos = window.scrollY;
-      const checkScroll =
-        prevScrollPos > currentScrollPos || currentScrollPos < 100;
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    setIsOpen(false);
 
-      setVisible(checkScroll);
+    const currentScrollPos = latest.valueOf();
+    const checkScroll =
+      prevScrollPos > currentScrollPos || currentScrollPos < 100;
 
-      setPrevScrollPos(currentScrollPos);
-    },
-    100,
-    false,
-  );
+    setVisible(checkScroll);
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    setPrevScrollPos(currentScrollPos);
+  });
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [handleScroll, isOpen]);
+  const variants = {
+    visible: { opacity: 1, y: 0 },
+    hidden: { opacity: 0, y: -25 },
+  };
 
   return (
-    <header
-      className={`${
-        visible ? "top-0" : "-top-24"
-      } fixed z-10 w-full bg-slate-50 py-2 duration-300 ease-out dark:bg-slate-950`}
+    <motion.header
+      variants={variants}
+      animate={visible ? "visible" : "hidden"}
+      className="fixed  top-0 z-10 w-screen bg-slate-50 py-2  dark:bg-slate-950"
     >
-      <nav className="container mx-auto">
-        <div className="flex items-center justify-between">
+      <nav className="container mx-auto px-8">
+        <motion.div
+          initial={false}
+          animate={isOpen ? "open" : "closed"}
+          className="flex w-full items-center justify-between"
+        >
           <Link
             href="/#"
             className="px-4 py-6 text-xl transition hover:scale-110 hover:text-purple-400 lg:text-3xl"
           >
             {`<Julian Valle.dev />`}
           </Link>
-          <button
-            className={`z-10 mr-8 flex h-8 w-8 cursor-pointer flex-col  flex-wrap justify-around lg:hidden`}
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            <div
-              className={`block h-[0.35rem] w-8 origin-[1px] rounded bg-black transition-all dark:bg-white ${
-                isOpen ? "rotate-45" : "rotate-0"
-              }`}
-            />
-            <div
-              className={`block h-[0.35rem] w-8 origin-[1px] rounded bg-black transition-all dark:bg-white ${
-                isOpen ? "translate-x-28 bg-transparent" : "translate-x-0"
-              }`}
-            />
-            <div
-              className={`block h-[0.35rem] w-8 origin-[1px] rounded bg-black transition-all dark:bg-white ${
-                isOpen ? "rotate-[-45deg]" : "rotate-0"
-              }`}
-            />
-          </button>
-          <div className="hidden w-1/3 items-center justify-between lg:flex">
+          {/* hamburger */}
+          <HamburgerMenu toggle={() => setIsOpen(!isOpen) as any} />
+
+          <div className="hidden w-1/2 items-center justify-between lg:flex">
             <Link
               href="/#about-me"
-              className="rounded px-4 py-3 transition ease-in-out hover:scale-110 active:scale-100 dark:hover:bg-purple-600"
+              className="rounded-full px-4 py-3 transition ease-in-out hover:scale-110 active:scale-100 dark:hover:bg-purple-600"
             >
               About
             </Link>
             <Link
               href="/#skills"
-              className="rounded px-4 py-3 transition ease-in-out hover:scale-110 active:scale-100 dark:hover:bg-purple-600"
+              className="rounded-full px-4 py-3 transition ease-in-out hover:scale-110 active:scale-100 dark:hover:bg-purple-600"
             >
               Skills
             </Link>
             <Link
               href="/#projects"
-              className="rounded px-4 py-3 duration-200 hover:scale-110 active:scale-100 dark:hover:bg-purple-600"
+              className="rounded-full px-4 py-3 duration-200 hover:scale-110 active:scale-100 dark:hover:bg-purple-600"
             >
               Projects
             </Link>
             <Link
               href="/#careers"
-              className="rounded px-4 py-3 duration-200 hover:scale-110 active:scale-100 dark:hover:bg-purple-600"
+              className="rounded-full px-4 py-3 duration-200 hover:scale-110 active:scale-100 dark:hover:bg-purple-600"
             >
               Careers
             </Link>
             <Link
               href="/#contact"
-              className="rounded px-4 py-3 duration-200 hover:scale-110 active:scale-100 dark:hover:bg-purple-600"
+              className="rounded-full px-4 py-3 duration-200 hover:scale-110 active:scale-100 dark:hover:bg-purple-600"
             >
               Contact
             </Link>
@@ -102,30 +86,9 @@ export const Navbar = () => {
           </div>
 
           {/* Mobile navbar */}
-          <div
-            className={`right-0 ${
-              isOpen ? "" : "translate-x-full"
-            } absolute top-10 -z-30 flex h-screen w-screen flex-col items-center justify-evenly bg-slate-50 shadow-lg transition dark:bg-black lg:hidden `}
-          >
-            <Link href="/#about-me" className="py-8">
-              About
-            </Link>
-            <Link href="/#skills" className="py-8">
-              Skills
-            </Link>
-            <Link href="/#projects" className="py-8">
-              Projects
-            </Link>
-            <Link href="/#careers" className="py-8">
-              Careers
-            </Link>
-            <Link href="/#contact" className="py-8">
-              Contact
-            </Link>
-            <ThemeSwitcher />
-          </div>
-        </div>
+          <MobileNavbar isOpen={isOpen} />
+        </motion.div>
       </nav>
-    </header>
+    </motion.header>
   );
 };

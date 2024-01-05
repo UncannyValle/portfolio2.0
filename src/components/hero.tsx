@@ -1,11 +1,17 @@
+"use client";
 import { User } from "@prisma/client";
 import Link from "next/link";
 import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 export const Hero = ({ user }: { user: User | null }) => {
-
   return (
-    <div className="hero relative mt-20 flex min-h-screen flex-col items-center justify-center p-8">
+    <motion.div
+      initial={{ opacity: 0, scale: 1.3 }}
+      animate={{ opacity: 1, scale: 1.0 }}
+      transition={{ type: "spring" }}
+      className="hero container my-20 flex min-h-screen flex-col items-center justify-center overflow-hidden p-8"
+    >
       <h1 className="inline text-5xl lg:text-7xl">
         Hi, Everyone! I&apos;m Julian
         <div className="inline-block animate-bounce">👋🏼</div>
@@ -56,6 +62,6 @@ export const Hero = ({ user }: { user: User | null }) => {
           View my Resume
         </Link>
       </div>
-    </div>
+    </motion.div>
   );
 };
