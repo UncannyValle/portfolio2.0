@@ -7,10 +7,10 @@ import { motion } from "framer-motion";
 export const Hero = ({ user }: { user: User | null }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1 }}
-      className="hero flex min-h-screen flex-col items-center justify-center p-8 my-20"
+      initial={{ opacity: 0, scale: 1.3 }}
+      animate={{ opacity: 1, scale: 1.0 }}
+      transition={{ type: "spring" }}
+      className="hero container my-20 flex min-h-screen flex-col items-center justify-center overflow-hidden p-8"
     >
       <h1 className="inline text-5xl lg:text-7xl">
         Hi, Everyone! I&apos;m Julian
