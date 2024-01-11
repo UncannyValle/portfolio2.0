@@ -8,7 +8,7 @@ import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 export const Hero = ({ project }: { project: Project | null }) => {
   return (
     <motion.div
-      className="min-h-full"
+      className="h-5/6"
       initial={{ opacity: 0, y: -100 }}
       animate={{
         opacity: 1,
