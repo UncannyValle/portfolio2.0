@@ -1,20 +1,22 @@
 "use client";
 import Image from "next/image";
 import { Project, Skill } from "@prisma/client";
-import { motion, useAnimation } from "framer-motion";
-import { useEffect } from "react";
+import { motion } from "framer-motion";
+import Link from "next/link";
 
 interface ProjectWithSkills extends Project {
   skills: Skill[];
 }
 
 export const Projects = ({ projects }: { projects: ProjectWithSkills[] }) => {
+  const MotionLink = motion(Link);
+
   return (
     <div className="w-full p-8 pt-20" id="projects">
       <h1 className="mb-12 text-center text-4xl lg:text-6xl">Projects</h1>
       <div className="flex flex-col">
-        {projects.map((project, index) => (
-          <motion.a
+        {projects.map((project) => (
+          <MotionLink
             key={project.slug}
             className="mb-16 flex w-full flex-col items-center justify-evenly rounded-2xl border-2 border-solid border-slate-400 p-4   hover:border-0 hover:shadow-2xl dark:shadow-purple-400 md:flex-row"
             href={`/projects/${project.slug}`}
@@ -52,7 +54,7 @@ export const Projects = ({ projects }: { projects: ProjectWithSkills[] }) => {
               </div>
               <p className="line-clamp-3 pt-8">{project.summary}</p>
             </div>
-          </motion.a>
+          </MotionLink>
         ))}
       </div>
     </div>
