@@ -29,7 +29,7 @@ export const Careers = ({ careers }: { careers: CareerWithAttr[] | [] }) => {
     visible: {
       opacity: 1,
       scale: 1,
-      transition: { type: "spring", duration: 3 },
+      transition: { type: "spring", duration: 2 },
     },
     hidden: { opacity: 0, scale: 1.5 },
   };
