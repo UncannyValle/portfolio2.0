@@ -8,7 +8,7 @@ import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 export const Hero = ({ project }: { project: Project | null }) => {
   return (
     <motion.div
-      className="min-h-screen"
+      className="min-h-full"
       initial={{ opacity: 0, y: -100 }}
       animate={{
         opacity: 1,
@@ -30,8 +30,8 @@ export const Hero = ({ project }: { project: Project | null }) => {
         width={1200}
         priority
       />
-      <div className="mx-auto my-8 lg:w-3/4">
-        <div className="flex flex-wrap md:justify-evenly">
+      <div className="mx-auto my-8 w-full lg:w-3/4">
+        <div className="flex flex-wrap justify-evenly">
           {project?.github ? (
             <Link
               href={project.github}
