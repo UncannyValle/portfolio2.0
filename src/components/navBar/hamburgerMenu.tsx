@@ -4,7 +4,7 @@ const Path = (props: any) => (
   <motion.path
     fill="transparent"
     strokeWidth="3"
-    stroke="hsl(0, 0%, 18%)"
+    stroke="hsl(254.0625, 67.36842105263158%, 62.745098039215684%)"
     strokeLinecap="round"
     {...props}
   />
