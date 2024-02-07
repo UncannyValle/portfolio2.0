@@ -5,12 +5,13 @@ import { Providers } from "./providers";
 import { Navbar } from "../components/navBar/navbar";
 import { Footer } from "./footer";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Julian Valle Portfolio",
-  description: "Julian Valle Full Stack Developer",
+  description: "Julian Valle is Full Stack Developer,building amazing sites using React, Vue, Next.js and Laravel"
 };
 
 export default function RootLayout({
@@ -26,9 +27,10 @@ export default function RootLayout({
         <Providers attribute="class" defaultTheme="system" enableSystem>
           <Navbar />
           {children}
-          <SpeedInsights />
           <Footer />
         </Providers>
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
