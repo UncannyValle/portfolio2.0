@@ -2,9 +2,9 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 datasource db {
-    provider     = "mysql"
-    url          = env("DATABASE_URL")
-    relationMode = "prisma"
+  provider = "postgresql"
+  url = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
 
 generator client {
@@ -15,7 +15,7 @@ model User {
     id          Int     @id @default(autoincrement())
     name        String?
     headline    String? @db.Text
-    description String? @db.LongText
+    description String? @db.Text
     email       String? @unique
     github      String? @unique
     linkedin    String? @unique
@@ -28,9 +28,9 @@ model Project {
     slug    String   @unique
     github  String?
     link    String?
-    summary String?  @db.MediumText
-    goal    String?  @db.LongText
-    outcome String?  @db.LongText
+    summary String?  @db.Text
+    goal    String?  @db.Text
+    outcome String?  @db.Text
     skills  Skill[]
     Career  Career[]
 }
@@ -39,8 +39,6 @@ model Skill {
     id         Int       @id @default(autoincrement())
     name       String?
     experience Int?      @default(0)
-    iconName   String?
-    iconBrand  String?
     projectId  Int?
     projects   Project[]
     Career     Career[]
@@ -52,7 +50,7 @@ model Career {
     name               String
     startDate          DateTime  @db.Date
     endDate            DateTime  @db.Date
-    summary            String    @db.MediumText
+    summary            String    @db.Text
     associatedProjects Project[]
     associatedSkills   Skill[]
     projectId          Int?
