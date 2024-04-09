@@ -1,7 +1,5 @@
 "use client";
 
-import { Project } from "@prisma/client";
-import { once } from "events";
 import { motion } from "framer-motion";
 
 type ContentProps = {
@@ -23,7 +21,7 @@ export const Content = ({ title, projectContent, direction }: ContentProps) => {
       }}
       transition={{
         duration: 1.5,
-        delay: .2,
+        delay: 0.2,
         type: "spring",
       }}
       viewport={{ once: true }}

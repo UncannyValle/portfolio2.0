@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { Project, Skill, Career } from "@prisma/client";
-import { useAnimate, stagger, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 interface CareerWithAttr extends Career {
   associatedProjects: Project[];
